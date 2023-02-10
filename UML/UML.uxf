@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>150</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Anime
+--
+-name: String
+-releaseDate: LocalDate
+-episodes: int
+-synopsis: String
+-downloaded: boolean
+-watched: boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>150</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Review
+--
+-belongsTo: Anime
+-writtenBy: String
+-writeDate: LocalDate
+-rating: double
+-review: String
+-recommended: boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>160</y>
+      <w>240</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+belongsTo
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+  </element>
+</diagram>
