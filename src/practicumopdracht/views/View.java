@@ -5,6 +5,9 @@ import javafx.scene.Parent;
 public abstract class View {
     private Parent root;
 
+    public View() {
+        root = initializeView();
+    }
 
     protected abstract Parent initializeView();
 
@@ -12,8 +15,5 @@ public abstract class View {
         return root;
     }
 
-    public View() {
-        root = initializeView();
-    }
 
 }
