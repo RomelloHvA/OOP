@@ -9,4 +9,5 @@ public class Anime {
     private String synopsis;
     private boolean downloaded;
     private boolean watched;
+
 }
