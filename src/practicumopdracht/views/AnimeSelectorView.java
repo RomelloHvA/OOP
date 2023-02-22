@@ -1,17 +1,11 @@
 package practicumopdracht.views;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import practicumopdracht.models.Anime;
-
-import java.io.FileInputStream;
-import java.time.LocalDate;
 
 public class AnimeSelectorView extends View{
 
@@ -21,37 +15,36 @@ public class AnimeSelectorView extends View{
 
 
 
-        VBox masterbox = new VBox();
-        masterbox.setSpacing(defaultSpacing);
+        VBox masterBox = new VBox();
+        masterBox.setSpacing(DEFAULT_SPACING);
 
 
         HBox animeListBox = new HBox();
-        animeListBox.setSpacing(defaultSpacing);
-        animeListBox.setPadding(leftPadding);
+        animeListBox.setSpacing(DEFAULT_SPACING);
+        animeListBox.setPadding(DEFAULT_LEFT_PADDING);
 
 //        List view
         ListView<Anime> animeList = new ListView<>();
-        int widthAnimeList = 400;
-        int heightAnimeList = 100;
-        animeList.setMinWidth(widthAnimeList);
-        animeList.setMaxWidth(widthAnimeList);
-        animeList.setMaxHeight(heightAnimeList);
-        animeList.setMinHeight(heightAnimeList);
+
+        animeList.setMinWidth(DEFAULT_WIDTH_LIST);
+        animeList.setMaxWidth(DEFAULT_WIDTH_LIST);
+        animeList.setMaxHeight(DEFAULT_HEIGT_LIST);
+        animeList.setMinHeight(DEFAULT_HEIGT_LIST);
 
         VBox reviewDeleteButtonBox = new VBox();
-        reviewDeleteButtonBox.setSpacing(defaultSpacing);
-        reviewDeleteButtonBox.setPadding(topPadding);
+        reviewDeleteButtonBox.setSpacing(DEFAULT_SPACING);
+        reviewDeleteButtonBox.setPadding(DEFAULT_LEFT_PADDING);
         Button deleteButton = new Button("Delete anime");
         Button reviewButton = new Button(" Go to Reviews");
         reviewDeleteButtonBox.getChildren().addAll(reviewButton,deleteButton);
 
         animeListBox.getChildren().addAll(animeList,reviewDeleteButtonBox);
-        masterbox.getChildren().add(animeListBox);
+        masterBox.getChildren().add(animeListBox);
 
 
         HBox animeNameAndDateBox = new HBox();
-        animeNameAndDateBox.setSpacing(defaultSpacing);
-        animeNameAndDateBox.setPadding(leftPadding);
+        animeNameAndDateBox.setSpacing(DEFAULT_SPACING);
+        animeNameAndDateBox.setPadding(DEFAULT_LEFT_PADDING);
 
         Label animeNameLabel = new Label("Anime Name:");
         TextField animeNameText = new TextField();
@@ -59,50 +52,50 @@ public class AnimeSelectorView extends View{
         DatePicker datePicker = new DatePicker();
 
         animeNameAndDateBox.getChildren().addAll(animeNameLabel,animeNameText, releaseDateLabel, datePicker);
-        masterbox.getChildren().add(animeNameAndDateBox);
+        masterBox.getChildren().add(animeNameAndDateBox);
 
 // This is where the synopsis, watched,downloaded, img and episode count should be in.
         GridPane animeDetailBox = new GridPane();
-        animeDetailBox.setPadding(leftPadding);
+        animeDetailBox.setPadding(DEFAULT_LEFT_PADDING);
 
         HBox watchedAndDownloadedBox = new HBox();
-        watchedAndDownloadedBox.setPadding(leftPadding);
+        watchedAndDownloadedBox.setPadding(DEFAULT_LEFT_PADDING);
         Label watchedLabel = new Label("Watched:");
         CheckBox watchedCheckBox = new CheckBox();
-        watchedCheckBox.setPadding(leftPadding);
+        watchedCheckBox.setPadding(DEFAULT_LEFT_PADDING);
         Label downloadedLabel = new Label("Downloaded:");
-        downloadedLabel.setPadding(leftPadding);
+        downloadedLabel.setPadding(DEFAULT_LEFT_PADDING);
         CheckBox downloadedCheckBox = new CheckBox();
-        downloadedCheckBox.setPadding(leftPadding);
+        downloadedCheckBox.setPadding(DEFAULT_LEFT_PADDING);
 
         watchedAndDownloadedBox.getChildren().addAll(watchedLabel,watchedCheckBox, downloadedLabel, downloadedCheckBox);
 
         animeDetailBox.getChildren().add(0,watchedAndDownloadedBox);
-        masterbox.getChildren().add(animeDetailBox);
+        masterBox.getChildren().add(animeDetailBox);
 
         Label episodeCountLabel = new Label("Number of episodes: " );
-        episodeCountLabel.setPadding(leftPadding);
+        episodeCountLabel.setPadding(DEFAULT_LEFT_PADDING);
         TextField episodeCountTextField = new TextField();
         animeDetailBox.add(episodeCountLabel, 1, 0);
         animeDetailBox.add(episodeCountTextField,2,0);
 
         HBox synopsisBox = new HBox();
-        synopsisBox.setSpacing(defaultSpacing);
+        synopsisBox.setSpacing(DEFAULT_SPACING);
         Label synopsisLabel = new Label("Synopsis:");
-        synopsisLabel.setPadding(leftPadding);
+        synopsisLabel.setPadding(DEFAULT_LEFT_PADDING);
         TextArea synopsisTextArea = new TextArea();
 
         synopsisBox.getChildren().addAll(synopsisLabel,synopsisTextArea);
-        masterbox.getChildren().add(synopsisBox);
+        masterBox.getChildren().add(synopsisBox);
 
         HBox newAndSaveButtonBox = new HBox();
-        newAndSaveButtonBox.setSpacing(defaultSpacing);
-        newAndSaveButtonBox.setPadding(leftPadding);
+        newAndSaveButtonBox.setSpacing(DEFAULT_SPACING);
+        newAndSaveButtonBox.setPadding(DEFAULT_LEFT_PADDING);
         Button newButton = new Button("Add new anime");
         Button saveButton = new Button("Save (Changes)");
 
         newAndSaveButtonBox.getChildren().addAll(newButton,saveButton);
-        masterbox.getChildren().add(newAndSaveButtonBox);
+        masterBox.getChildren().add(newAndSaveButtonBox);
 
 
 
@@ -115,7 +108,7 @@ public class AnimeSelectorView extends View{
 
 
 
-        return masterbox;
+        return masterBox;
     }
 
 }

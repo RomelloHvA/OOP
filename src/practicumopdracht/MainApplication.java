@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import practicumopdracht.views.AnimeSelectorView;
+import practicumopdracht.views.ReviewView;
 import practicumopdracht.views.View;
 
 public class MainApplication extends Application {
@@ -25,8 +26,10 @@ public class MainApplication extends Application {
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);
         View AnimeSelectorView = new AnimeSelectorView();
+        View reviewView = new ReviewView();
         Scene homeScene = new Scene(AnimeSelectorView.getRoot());
-        stage.setScene(homeScene);
+        Scene reviewScene = new Scene(reviewView.getRoot());
+        stage.setScene(reviewScene);
         stage.show();
     }
 }
