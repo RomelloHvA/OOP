@@ -7,7 +7,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import practicumopdracht.models.Review;
 
-public class ReviewView extends View{
+public class ReviewView extends View {
     @Override
     protected Parent initializeView() {
 
@@ -21,7 +21,7 @@ public class ReviewView extends View{
         ComboBox<Double> ratingComboBox = new ComboBox<>();
         Label animeName = new Label("Anime: ");
 
-        sortAndNameBox.getChildren().addAll(sortByRatingLabel,ratingComboBox,animeName);
+        sortAndNameBox.getChildren().addAll(sortByRatingLabel, ratingComboBox, animeName);
         masterBox.getChildren().add(sortAndNameBox);
 
 
@@ -35,7 +35,7 @@ public class ReviewView extends View{
         VBox returnAndDeleteButtonBox = new VBox();
         Button returnButton = new Button("Return");
         Button deleteReviewButton = new Button("Delete Review");
-        returnAndDeleteButtonBox.getChildren().addAll(returnButton,deleteReviewButton);
+        returnAndDeleteButtonBox.getChildren().addAll(returnButton, deleteReviewButton);
         returnAndDeleteButtonBox.setSpacing(DEFAULT_SPACING);
         returnAndDeleteButtonBox.setPadding(DEFAULT_LEFT_PADDING);
 
@@ -50,23 +50,23 @@ public class ReviewView extends View{
 
         Label writtenByLabel = new Label("Written by:");
         TextField writtenByTextField = new TextField();
-        reviewDetailPane.add(writtenByLabel,0,0);
-        reviewDetailPane.add(writtenByTextField,1,0);
+        reviewDetailPane.add(writtenByLabel, 0, 0);
+        reviewDetailPane.add(writtenByTextField, 1, 0);
 
         Label writeDateLabel = new Label("Written on:");
         DatePicker writeDatePicker = new DatePicker();
-        reviewDetailPane.add(writeDateLabel,2,0);
-        reviewDetailPane.add(writeDatePicker,3,0);
+        reviewDetailPane.add(writeDateLabel, 2, 0);
+        reviewDetailPane.add(writeDatePicker, 3, 0);
 
         Label recommendedLabel = new Label("Recommended:");
         CheckBox recommendedCheckBox = new CheckBox();
-        reviewDetailPane.add(recommendedLabel,0,1);
-        reviewDetailPane.add(recommendedCheckBox,1,1);
+        reviewDetailPane.add(recommendedLabel, 0, 1);
+        reviewDetailPane.add(recommendedCheckBox, 1, 1);
 
         Label ratingLabel = new Label("Rating:");
         TextField reviewRating = new TextField();
-        reviewDetailPane.add(ratingLabel,2,1);
-        reviewDetailPane.add(reviewRating,3,1);
+        reviewDetailPane.add(ratingLabel, 2, 1);
+        reviewDetailPane.add(reviewRating, 3, 1);
 
         masterBox.getChildren().add(reviewDetailPane);
 
@@ -78,7 +78,7 @@ public class ReviewView extends View{
         TextArea reviewTextArea = new TextArea();
         reviewTextArea.setMaxWidth(DEFAULT_WIDTH_LIST);
 
-        reviewBox.getChildren().addAll(reviewLabel,reviewTextArea);
+        reviewBox.getChildren().addAll(reviewLabel, reviewTextArea);
         reviewAndButtonBox.getChildren().add(reviewBox);
 
 
@@ -88,7 +88,7 @@ public class ReviewView extends View{
 
         Button newReviewButton = new Button("New review");
         Button saveReviewButton = new Button("Save review");
-        newAndSaveButtonBox.getChildren().addAll(newReviewButton,saveReviewButton);
+        newAndSaveButtonBox.getChildren().addAll(newReviewButton, saveReviewButton);
         reviewAndButtonBox.getChildren().add(newAndSaveButtonBox);
 
         masterBox.getChildren().add(reviewAndButtonBox);

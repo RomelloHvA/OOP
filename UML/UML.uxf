@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.0.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>150</y>
-      <w>210</w>
-      <h>130</h>
+      <x>168</x>
+      <y>588</y>
+      <w>147</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>Anime
 --
@@ -23,10 +23,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>610</x>
-      <y>150</y>
-      <w>210</w>
-      <h>130</h>
+      <x>371</x>
+      <y>588</y>
+      <w>147</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>Review
 --
@@ -41,15 +41,175 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
-      <y>160</y>
-      <w>240</w>
-      <h>50</h>
+      <x>308</x>
+      <y>595</y>
+      <w>77</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 belongsTo
 m1=1
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>231</y>
+      <w>203</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;views&gt;&gt;
+/view/
+--
+-root: Parent
+#DEFAUTL_SPACING: int
+#DEFAULT_TOP_PADDING: Insets
+#DEFAULT_TOP_LEFT_PADDING: Insets
+#DEFAULT_LEFT_PADDING: Insets
+#DEFAULT_WIDTH_LIST: int
+#DEFAULT_HEIGHT_LIST: int
+-
++View()Parent
+/#initializeView()Parent/
++getRoot()Parent
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>427</x>
+      <y>441</y>
+      <w>203</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;views&gt;&gt;
+ReviewView
+--
+#initializeView()Parent
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>182</x>
+      <y>441</y>
+      <w>203</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;views&gt;&gt;
+AnimeSelectorView
+--
+#initializeView()Parent
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>273</x>
+      <y>371</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>371</y>
+      <w>91</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>217</x>
+      <y>147</y>
+      <w>112</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;javafx.application&gt;&gt;
+Application
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>63</x>
+      <y>224</y>
+      <w>203</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>MainApplication
+--
+-TITLE: string
+-WIDTH: int
+-HEIGHT: int
+--
++start(stage: Stage): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>49</x>
+      <y>336</y>
+      <w>140</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Main
+--
++main(args: String[]): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>112</x>
+      <y>287</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>259</x>
+      <y>266</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>203</x>
+      <y>175</y>
+      <w>63</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;70.0</additional_attributes>
   </element>
 </diagram>
