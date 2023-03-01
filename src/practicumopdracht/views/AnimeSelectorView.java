@@ -21,7 +21,7 @@ public class AnimeSelectorView extends View{
 
         HBox animeListBox = new HBox();
         animeListBox.setSpacing(DEFAULT_SPACING);
-        animeListBox.setPadding(DEFAULT_LEFT_PADDING);
+        animeListBox.setPadding(DEFAULT_TOP_LEFT_PADDING);
 
 //        List view
         ListView<Anime> animeList = new ListView<>();

@@ -3,6 +3,7 @@ package practicumopdracht;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import practicumopdracht.controllers.AnimeSelectorController;
 import practicumopdracht.views.AnimeSelectorView;
 import practicumopdracht.views.ReviewView;
 import practicumopdracht.views.View;
@@ -25,10 +26,9 @@ public class MainApplication extends Application {
         stage.setTitle(String.format("Practicumopdracht OOP2 - %s", TITLE));
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);
-        View AnimeSelectorView = new AnimeSelectorView();
         View reviewView = new ReviewView();
-        Scene homeScene = new Scene(AnimeSelectorView.getRoot());
-        Scene reviewScene = new Scene(reviewView.getRoot());
+        AnimeSelectorController masterController = new AnimeSelectorController();
+        Scene reviewScene = new Scene(masterController.getView().getRoot());
         stage.setScene(reviewScene);
         stage.show();
     }
