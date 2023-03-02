@@ -19,9 +19,12 @@ public class ReviewController extends Controller{
         return this.reviewView;
     }
 
-    public void handleReturnButtonClick(){
-        animeSelectorController = new AnimeSelectorController();
+    private void handleReturnButtonClick(){
+        this.animeSelectorController = new AnimeSelectorController();
         MainApplication.switchController(animeSelectorController);
 
     }
+
+
+
 }
