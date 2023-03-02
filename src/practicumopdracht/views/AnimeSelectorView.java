@@ -10,6 +10,57 @@ import practicumopdracht.models.Anime;
 public class AnimeSelectorView extends View{
 
 
+    private Button deleteButton;
+    private Button reviewsButton;
+    private TextField animeNameTextField;
+    private DatePicker releaseDatePicker;
+    private CheckBox watchedCheckBox;
+    private CheckBox downloadedCheckBox;
+    private TextField episodeCountTextField;
+    private TextArea synopsisTextArea;
+    private Button newButton;
+    private Button saveButton;
+
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+
+    public Button getReviewsButton() {
+        return reviewsButton;
+    }
+
+    public TextField getAnimeNameTextField() {
+        return animeNameTextField;
+    }
+
+    public DatePicker getReleaseDatePicker() {
+        return releaseDatePicker;
+    }
+
+    public CheckBox getWatchedCheckBox() {
+        return watchedCheckBox;
+    }
+
+    public CheckBox getDownloadedCheckBox() {
+        return downloadedCheckBox;
+    }
+
+    public TextField getEpisodeCountTextField() {
+        return episodeCountTextField;
+    }
+
+    public TextArea getSynopsisTextArea() {
+        return synopsisTextArea;
+    }
+
+    public Button getNewButton() {
+        return newButton;
+    }
+
+    public Button getSaveButton() {
+        return saveButton;
+    }
+
     @Override
     protected Parent initializeView() {
 
@@ -34,9 +85,9 @@ public class AnimeSelectorView extends View{
         VBox reviewDeleteButtonBox = new VBox();
         reviewDeleteButtonBox.setSpacing(DEFAULT_SPACING);
         reviewDeleteButtonBox.setPadding(DEFAULT_LEFT_PADDING);
-        Button deleteButton = new Button("Delete anime");
-        Button reviewButton = new Button(" Go to Reviews");
-        reviewDeleteButtonBox.getChildren().addAll(reviewButton,deleteButton);
+        deleteButton = new Button("Delete anime");
+        reviewsButton = new Button(" Go to Reviews");
+        reviewDeleteButtonBox.getChildren().addAll(reviewsButton, deleteButton);
 
         animeListBox.getChildren().addAll(animeList,reviewDeleteButtonBox);
         masterBox.getChildren().add(animeListBox);
@@ -47,11 +98,11 @@ public class AnimeSelectorView extends View{
         animeNameAndDateBox.setPadding(DEFAULT_LEFT_PADDING);
 
         Label animeNameLabel = new Label("Anime Name:");
-        TextField animeNameText = new TextField();
+        animeNameTextField = new TextField();
         Label releaseDateLabel = new Label("Release Date:");
-        DatePicker datePicker = new DatePicker();
+        releaseDatePicker = new DatePicker();
 
-        animeNameAndDateBox.getChildren().addAll(animeNameLabel,animeNameText, releaseDateLabel, datePicker);
+        animeNameAndDateBox.getChildren().addAll(animeNameLabel, animeNameTextField, releaseDateLabel, releaseDatePicker);
         masterBox.getChildren().add(animeNameAndDateBox);
 
 // This is where the synopsis, watched,downloaded, img and episode count should be in.
@@ -61,21 +112,21 @@ public class AnimeSelectorView extends View{
         HBox watchedAndDownloadedBox = new HBox();
         watchedAndDownloadedBox.setPadding(DEFAULT_LEFT_PADDING);
         Label watchedLabel = new Label("Watched:");
-        CheckBox watchedCheckBox = new CheckBox();
+        watchedCheckBox = new CheckBox();
         watchedCheckBox.setPadding(DEFAULT_LEFT_PADDING);
         Label downloadedLabel = new Label("Downloaded:");
         downloadedLabel.setPadding(DEFAULT_LEFT_PADDING);
-        CheckBox downloadedCheckBox = new CheckBox();
+        downloadedCheckBox = new CheckBox();
         downloadedCheckBox.setPadding(DEFAULT_LEFT_PADDING);
 
-        watchedAndDownloadedBox.getChildren().addAll(watchedLabel,watchedCheckBox, downloadedLabel, downloadedCheckBox);
+        watchedAndDownloadedBox.getChildren().addAll(watchedLabel, watchedCheckBox, downloadedLabel, downloadedCheckBox);
 
         animeDetailBox.getChildren().add(0,watchedAndDownloadedBox);
         masterBox.getChildren().add(animeDetailBox);
 
         Label episodeCountLabel = new Label("Number of episodes: " );
         episodeCountLabel.setPadding(DEFAULT_LEFT_PADDING);
-        TextField episodeCountTextField = new TextField();
+        episodeCountTextField = new TextField();
         animeDetailBox.add(episodeCountLabel, 1, 0);
         animeDetailBox.add(episodeCountTextField,2,0);
 
@@ -83,18 +134,18 @@ public class AnimeSelectorView extends View{
         synopsisBox.setSpacing(DEFAULT_SPACING);
         Label synopsisLabel = new Label("Synopsis:");
         synopsisLabel.setPadding(DEFAULT_LEFT_PADDING);
-        TextArea synopsisTextArea = new TextArea();
+        synopsisTextArea = new TextArea();
 
-        synopsisBox.getChildren().addAll(synopsisLabel,synopsisTextArea);
+        synopsisBox.getChildren().addAll(synopsisLabel, synopsisTextArea);
         masterBox.getChildren().add(synopsisBox);
 
         HBox newAndSaveButtonBox = new HBox();
         newAndSaveButtonBox.setSpacing(DEFAULT_SPACING);
         newAndSaveButtonBox.setPadding(DEFAULT_LEFT_PADDING);
-        Button newButton = new Button("Add new anime");
-        Button saveButton = new Button("Save (Changes)");
+        newButton = new Button("Add new anime");
+        saveButton = new Button("Save (Changes)");
 
-        newAndSaveButtonBox.getChildren().addAll(newButton,saveButton);
+        newAndSaveButtonBox.getChildren().addAll(newButton, saveButton);
         masterBox.getChildren().add(newAndSaveButtonBox);
 
 

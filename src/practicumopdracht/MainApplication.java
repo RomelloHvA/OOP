@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import practicumopdracht.controllers.AnimeSelectorController;
+import practicumopdracht.controllers.Controller;
 import practicumopdracht.views.AnimeSelectorView;
 import practicumopdracht.views.ReviewView;
 import practicumopdracht.views.View;
@@ -14,22 +15,33 @@ public class MainApplication extends Application {
     private final int WIDTH = 640;
     private final int HEIGHT = 480;
 
+    private static AnimeSelectorController animeSelectorController;
+    private static Stage stage;
+
     @Override
     public void start(Stage stage) {
+        MainApplication.stage = stage;
         if(!Main.launchedFromMain) {
             System.err.println("Je moet deze applicatie opstarten vanuit de Main-class, niet de MainApplication-class!");
             System.exit(1337);
 
             return;
         }
-
+        animeSelectorController = new AnimeSelectorController();
+        switchController(animeSelectorController);
+        stage = MainApplication.stage;
         stage.setTitle(String.format("Practicumopdracht OOP2 - %s", TITLE));
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);
-        View reviewView = new ReviewView();
-        AnimeSelectorController masterController = new AnimeSelectorController();
-        Scene reviewScene = new Scene(masterController.getView().getRoot());
-        stage.setScene(reviewScene);
         stage.show();
+
     }
+
+    public static void switchController(Controller controller){
+        Scene currentScene = new Scene(controller.getView().getRoot());
+        stage.setScene(currentScene);
+
+    }
+
+
 }

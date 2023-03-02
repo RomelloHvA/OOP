@@ -5,9 +5,67 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import practicumopdracht.models.Anime;
 import practicumopdracht.models.Review;
 
 public class ReviewView extends View {
+
+    private ComboBox<Double> ratingComboBox;
+    private ComboBox<Anime> animeComboBox;
+    private Button returnButton;
+    private Button deleteReviewButton;
+    private TextField writtenByTextField;
+    private DatePicker writeDatePicker;
+    private CheckBox recommendedCheckBox;
+    private TextField reviewRating;
+    private TextArea reviewTextArea;
+    private Button newReviewButton;
+    private Button saveReviewButton;
+
+    public ComboBox<Double> getRatingComboBox() {
+        return ratingComboBox;
+    }
+
+    public ComboBox<Anime> getAnimeComboBox() {
+        return animeComboBox;
+    }
+
+    public Button getReturnButton() {
+        return returnButton;
+    }
+
+    public Button getDeleteReviewButton() {
+        return deleteReviewButton;
+    }
+
+    public TextField getWrittenByTextField() {
+        return writtenByTextField;
+    }
+
+    public DatePicker getWriteDatePicker() {
+        return writeDatePicker;
+    }
+
+    public CheckBox getRecommendedCheckBox() {
+        return recommendedCheckBox;
+    }
+
+    public TextField getReviewRating() {
+        return reviewRating;
+    }
+
+    public TextArea getReviewTextArea() {
+        return reviewTextArea;
+    }
+
+    public Button getNewReviewButton() {
+        return newReviewButton;
+    }
+
+    public Button getSaveReviewButton() {
+        return saveReviewButton;
+    }
+
     @Override
     protected Parent initializeView() {
 
@@ -18,10 +76,11 @@ public class ReviewView extends View {
         sortAndNameBox.setSpacing(DEFAULT_SPACING);
         sortAndNameBox.setPadding(DEFAULT_LEFT_PADDING);
         Label sortByRatingLabel = new Label("Sort by rating: ");
-        ComboBox<Double> ratingComboBox = new ComboBox<>();
+        ratingComboBox = new ComboBox<>();
         Label animeName = new Label("Anime: ");
+        animeComboBox = new ComboBox<>();
 
-        sortAndNameBox.getChildren().addAll(sortByRatingLabel, ratingComboBox, animeName);
+        sortAndNameBox.getChildren().addAll(sortByRatingLabel, ratingComboBox, animeName, animeComboBox);
         masterBox.getChildren().add(sortAndNameBox);
 
 
@@ -33,8 +92,8 @@ public class ReviewView extends View {
         reviewListView.setMaxHeight(DEFAULT_HEIGT_LIST);
 
         VBox returnAndDeleteButtonBox = new VBox();
-        Button returnButton = new Button("Return");
-        Button deleteReviewButton = new Button("Delete Review");
+        returnButton = new Button("Return");
+        deleteReviewButton = new Button("Delete Review");
         returnAndDeleteButtonBox.getChildren().addAll(returnButton, deleteReviewButton);
         returnAndDeleteButtonBox.setSpacing(DEFAULT_SPACING);
         returnAndDeleteButtonBox.setPadding(DEFAULT_LEFT_PADDING);
@@ -49,22 +108,22 @@ public class ReviewView extends View {
         reviewDetailPane.setVgap(DEFAULT_SPACING);
 
         Label writtenByLabel = new Label("Written by:");
-        TextField writtenByTextField = new TextField();
+        writtenByTextField = new TextField();
         reviewDetailPane.add(writtenByLabel, 0, 0);
         reviewDetailPane.add(writtenByTextField, 1, 0);
 
         Label writeDateLabel = new Label("Written on:");
-        DatePicker writeDatePicker = new DatePicker();
+        writeDatePicker = new DatePicker();
         reviewDetailPane.add(writeDateLabel, 2, 0);
         reviewDetailPane.add(writeDatePicker, 3, 0);
 
         Label recommendedLabel = new Label("Recommended:");
-        CheckBox recommendedCheckBox = new CheckBox();
+        recommendedCheckBox = new CheckBox();
         reviewDetailPane.add(recommendedLabel, 0, 1);
         reviewDetailPane.add(recommendedCheckBox, 1, 1);
 
         Label ratingLabel = new Label("Rating:");
-        TextField reviewRating = new TextField();
+        reviewRating = new TextField();
         reviewDetailPane.add(ratingLabel, 2, 1);
         reviewDetailPane.add(reviewRating, 3, 1);
 
@@ -75,7 +134,7 @@ public class ReviewView extends View {
 
         VBox reviewBox = new VBox();
         Label reviewLabel = new Label("Review");
-        TextArea reviewTextArea = new TextArea();
+        reviewTextArea = new TextArea();
         reviewTextArea.setMaxWidth(DEFAULT_WIDTH_LIST);
 
         reviewBox.getChildren().addAll(reviewLabel, reviewTextArea);
@@ -86,8 +145,8 @@ public class ReviewView extends View {
         newAndSaveButtonBox.setSpacing(DEFAULT_SPACING);
         newAndSaveButtonBox.setPadding(DEFAULT_TOP_LEFT_PADDING);
 
-        Button newReviewButton = new Button("New review");
-        Button saveReviewButton = new Button("Save review");
+        newReviewButton = new Button("New review");
+        saveReviewButton = new Button("Save review");
         newAndSaveButtonBox.getChildren().addAll(newReviewButton, saveReviewButton);
         reviewAndButtonBox.getChildren().add(newAndSaveButtonBox);
 

@@ -2,7 +2,9 @@ package practicumopdracht.controllers;
 
 import practicumopdracht.views.View;
 
-public abstract class Controller {
+import java.util.EventListener;
+
+public abstract class Controller implements EventListener {
 
     public abstract View getView();
 }

@@ -1,10 +1,27 @@
 package practicumopdracht.controllers;
 
+import practicumopdracht.MainApplication;
+import practicumopdracht.views.ReviewView;
 import practicumopdracht.views.View;
 
 public class ReviewController extends Controller{
-    @Override
+
+    private ReviewView reviewView;
+    private Controller animeSelectorController;
+
+
+
+    public ReviewController(){
+        this.reviewView = new ReviewView();
+        this.reviewView.getReturnButton().setOnMouseClicked(mouseEvent -> handleReturnButtonClick());
+    }
     public View getView() {
-        return null;
+        return this.reviewView;
+    }
+
+    public void handleReturnButtonClick(){
+        animeSelectorController = new AnimeSelectorController();
+        MainApplication.switchController(animeSelectorController);
+
     }
 }
