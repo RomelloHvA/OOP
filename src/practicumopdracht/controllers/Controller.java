@@ -16,19 +16,14 @@ public abstract class Controller implements EventListener {
     protected final int MIN_EPISODES = 1;
     protected final String CANT_BE_EMPTY_MESSAGE = "Can't be empty.";
 
-
+    public abstract View getView();
     protected boolean isEmptyTextField(TextField textField) {
         return textField.getText().isBlank();
 
     }
-
     protected boolean isEmptyTextArea(TextArea textArea){
         return textArea.getText().isBlank();
     }
-
-
-
-    public abstract View getView();
 
     protected abstract void emptyAllInputFields();
 

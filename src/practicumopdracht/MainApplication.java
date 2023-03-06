@@ -15,7 +15,6 @@ public class MainApplication extends Application {
     private final int WIDTH = 640;
     private final int HEIGHT = 480;
 
-    private static AnimeSelectorController animeSelectorController;
     private static Stage stage;
 
     @Override
@@ -27,9 +26,8 @@ public class MainApplication extends Application {
 
             return;
         }
-        animeSelectorController = new AnimeSelectorController();
+        AnimeSelectorController animeSelectorController = new AnimeSelectorController();
         switchController(animeSelectorController);
-        stage = MainApplication.stage;
         stage.setTitle(String.format("Practicumopdracht OOP2 - %s", TITLE));
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);
