@@ -19,18 +19,45 @@ public class Anime {
         this.watched = watched;
     }
 
-    @Override
-    public String toString() {
+    public String toStringConfirmMessage() {
         return
                 "name: " + name + '\n' +
                 "releaseDate: " + releaseDate +"\n" +
                 "episodes: " + episodes +  "\n" +
-                "synopsis: " + synopsis + '\n' +
                 "downloaded: " + downloaded + "\n" +
                 "watched: " + watched;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s , Episodes: %d , Release date: %s",name,episodes,releaseDate);
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setEpisodes(int episodes) {
+        this.episodes = episodes;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
+
+    public void setDownloaded(boolean downloaded) {
+        this.downloaded = downloaded;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
     }
 }

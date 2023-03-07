@@ -7,6 +7,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import practicumopdracht.models.Anime;
 
+import java.util.ArrayList;
+
 public class AnimeSelectorView extends View{
 
 
@@ -20,51 +22,16 @@ public class AnimeSelectorView extends View{
     private TextArea synopsisTextArea;
     private Button newButton;
     private Button saveButton;
+    private ListView<Anime> animeList;
+    private ArrayList<Anime> animeArrayList;
 
-    public Button getDeleteButton() {
-        return deleteButton;
-    }
 
-    public Button getReviewsButton() {
-        return reviewsButton;
-    }
 
-    public TextField getAnimeNameTextField() {
-        return animeNameTextField;
-    }
 
-    public DatePicker getReleaseDatePicker() {
-        return releaseDatePicker;
-    }
-
-    public CheckBox getWatchedCheckBox() {
-        return watchedCheckBox;
-    }
-
-    public CheckBox getDownloadedCheckBox() {
-        return downloadedCheckBox;
-    }
-
-    public TextField getEpisodeCountTextField() {
-        return episodeCountTextField;
-    }
-
-    public TextArea getSynopsisTextArea() {
-        return synopsisTextArea;
-    }
-
-    public Button getNewButton() {
-        return newButton;
-    }
-
-    public Button getSaveButton() {
-        return saveButton;
-    }
 
     @Override
     protected Parent initializeView() {
-
-
+        animeArrayList = new ArrayList<>();
 
         VBox masterBox = new VBox();
         masterBox.setSpacing(DEFAULT_SPACING);
@@ -75,7 +42,8 @@ public class AnimeSelectorView extends View{
         animeListBox.setPadding(DEFAULT_TOP_LEFT_PADDING);
 
 //        List view
-        ListView<Anime> animeList = new ListView<>();
+        animeList = new ListView<>();
+        animeList.getItems().addAll(animeArrayList);
 
         animeList.setMinWidth(DEFAULT_WIDTH_LIST);
         animeList.setMaxWidth(DEFAULT_WIDTH_LIST);
@@ -158,8 +126,52 @@ public class AnimeSelectorView extends View{
 //        Image posterImage = new Image(new FileInputStream("images/placeholder.jpg"));
 
 
-
         return masterBox;
+    }
+    public ListView<Anime> getAnimeList() {
+        return animeList;
+    }
+
+
+
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+
+    public Button getReviewsButton() {
+        return reviewsButton;
+    }
+
+    public TextField getAnimeNameTextField() {
+        return animeNameTextField;
+    }
+
+    public DatePicker getReleaseDatePicker() {
+        return releaseDatePicker;
+    }
+
+    public CheckBox getWatchedCheckBox() {
+        return watchedCheckBox;
+    }
+
+    public CheckBox getDownloadedCheckBox() {
+        return downloadedCheckBox;
+    }
+
+    public TextField getEpisodeCountTextField() {
+        return episodeCountTextField;
+    }
+
+    public TextArea getSynopsisTextArea() {
+        return synopsisTextArea;
+    }
+
+    public Button getNewButton() {
+        return newButton;
+    }
+
+    public Button getSaveButton() {
+        return saveButton;
     }
 
 }

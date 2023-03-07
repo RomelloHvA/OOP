@@ -43,6 +43,7 @@ public class ReviewController extends Controller{
         deleteButton = this.reviewView.getDeleteReviewButton();
         writtenByTextField = this.reviewView.getWrittenByTextField();
         writeDatePicker = this.reviewView.getWriteDatePicker();
+        writeDatePicker.setEditable(false);
         recommendedCheckBox = this.reviewView.getRecommendedCheckBox();
         reviewRating = this.reviewView.getReviewRating();
         reviewTextArea = this.reviewView.getReviewTextArea();

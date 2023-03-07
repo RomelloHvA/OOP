@@ -9,6 +9,7 @@ import practicumopdracht.views.AnimeSelectorView;
 import practicumopdracht.views.View;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class AnimeSelectorController extends Controller{
 
@@ -33,12 +34,14 @@ public class AnimeSelectorController extends Controller{
     private TextArea synopsisTextArea;
     private CheckBox watchedCheckBox;
     private CheckBox downloadedCheckBox;
+    private ListView<Anime> animeListView;
 
     public AnimeSelectorController() {
         this.animeSelectorView = new AnimeSelectorView();
 
         reviewsButton = this.animeSelectorView.getReviewsButton();
         releaseDatePicker = animeSelectorView.getReleaseDatePicker();
+        releaseDatePicker.setEditable(false);
         animeNameTextField = animeSelectorView.getAnimeNameTextField();
         newButton = this.animeSelectorView.getNewButton();
         watchedCheckBox = animeSelectorView.getWatchedCheckBox();
@@ -47,12 +50,15 @@ public class AnimeSelectorController extends Controller{
         episodeCountTextField = animeSelectorView.getEpisodeCountTextField();
         saveButton = animeSelectorView.getSaveButton();
         deleteButton = animeSelectorView.getDeleteButton();
+        animeListView = animeSelectorView.getAnimeList();
 
-        errorMessage = "please enter valid\n";
+
+
+        errorMessage = "Please enter valid\n";
         confirmNewAnimeText = "Confirm new Anime/Save Changes?\n";
 
         this.alert = new Alert(Alert.AlertType.WARNING);
-        this.confirmNewAnimeAlert = new Alert(Alert.AlertType.CONFIRMATION,confirmNewAnimeText);
+        this.confirmNewAnimeAlert = new Alert(Alert.AlertType.CONFIRMATION);
 
         reviewsButton.setOnMouseClicked(mouseEvent -> handleReviewButtonClick());
         newButton.setOnMouseClicked(mouseEvent -> handleNewAnimeButtonClick());
@@ -72,6 +78,7 @@ public class AnimeSelectorController extends Controller{
     }
 
     private void handleNewAnimeButtonClick(){
+        animeListView.getSelectionModel().select(null);
         emptyAllInputFields();
         setAllFieldBorderDefaults();
     }
@@ -81,21 +88,47 @@ public class AnimeSelectorController extends Controller{
         boolean validReleaseDate = isValidReleaseDate();
         boolean isValidEpisodeCount = isValidEpisodeCount();
         boolean isValidSynopis = isValidSynopsis();
+        Anime animeFromListView = animeSelectorView.getAnimeList().getSelectionModel().getSelectedItem();
 
+            // Checks all the fields for valid input before proceeding.
         if (emptyAnimeName || !validReleaseDate || !isValidEpisodeCount || !isValidSynopis){
             alert.setContentText(errorMessage);
             alert.show();
             errorMessage = "Please enter valid:\n";
-        } else {
 
+            // new Anime will be added if none is selected.
+        } else if (animeFromListView == null) {
             getCheckBoxesValue();
             Anime anime = new Anime(animeName,animeReleaseDate,episodeCount,synopsis,downloadedCheckbox,watchedCheckbox);
-            confirmNewAnimeText += anime.toString();
+            confirmNewAnimeText += anime.toStringConfirmMessage();
+            confirmNewAnimeAlert.setContentText(confirmNewAnimeText);
+            Optional<ButtonType> buttonResult = confirmNewAnimeAlert.showAndWait();
 
+            if (buttonResult.isEmpty()){
+                System.out.println("Niks geklikt");
+            } else if (buttonResult.get() == ButtonType.OK) {
+
+                animeListView.getItems().add(anime);
+                animeListView.refresh();
+                animeListView.getSelectionModel().selectLast();
+
+            } else if (buttonResult.get() == ButtonType.CANCEL) {
+                System.out.println("Cancel geklikt");
+            }
+
+            // Changes will be saved for the selected Anime.
+        } else {
+            Anime selectedAnime = animeListView.getSelectionModel().getSelectedItem();
+            selectedAnime.setName(animeName);
+            selectedAnime.setDownloaded(downloadedCheckbox);
+            selectedAnime.setEpisodes(episodeCount);
+            selectedAnime.setWatched(watchedCheckbox);
+            selectedAnime.setReleaseDate(animeReleaseDate);
+            selectedAnime.setSynopsis(synopsis);
+            animeListView.refresh();
             confirmNewAnimeAlert.setContentText(confirmNewAnimeText);
             confirmNewAnimeAlert.show();
-            emptyAllInputFields();
-            setAllFieldBorderDefaults();
+
         }
 
 

@@ -5,9 +5,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import practicumopdracht.controllers.AnimeSelectorController;
 import practicumopdracht.controllers.Controller;
-import practicumopdracht.views.AnimeSelectorView;
-import practicumopdracht.views.ReviewView;
-import practicumopdracht.views.View;
 
 public class MainApplication extends Application {
 
