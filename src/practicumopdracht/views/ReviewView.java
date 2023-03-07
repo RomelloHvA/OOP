@@ -22,49 +22,7 @@ public class ReviewView extends View {
     private Button newReviewButton;
     private Button saveReviewButton;
 
-    public ComboBox<Double> getRatingComboBox() {
-        return ratingComboBox;
-    }
 
-    public ComboBox<Anime> getAnimeComboBox() {
-        return animeComboBox;
-    }
-
-    public Button getReturnButton() {
-        return returnButton;
-    }
-
-    public Button getDeleteReviewButton() {
-        return deleteReviewButton;
-    }
-
-    public TextField getWrittenByTextField() {
-        return writtenByTextField;
-    }
-
-    public DatePicker getWriteDatePicker() {
-        return writeDatePicker;
-    }
-
-    public CheckBox getRecommendedCheckBox() {
-        return recommendedCheckBox;
-    }
-
-    public TextField getReviewRating() {
-        return reviewRating;
-    }
-
-    public TextArea getReviewTextArea() {
-        return reviewTextArea;
-    }
-
-    public Button getNewReviewButton() {
-        return newReviewButton;
-    }
-
-    public Button getSaveReviewButton() {
-        return saveReviewButton;
-    }
 
     @Override
     protected Parent initializeView() {
@@ -154,5 +112,49 @@ public class ReviewView extends View {
 
 
         return masterBox;
+    }
+
+    public ComboBox<Double> getRatingComboBox() {
+        return ratingComboBox;
+    }
+
+    public ComboBox<Anime> getAnimeComboBox() {
+        return animeComboBox;
+    }
+
+    public Button getReturnButton() {
+        return returnButton;
+    }
+
+    public Button getDeleteReviewButton() {
+        return deleteReviewButton;
+    }
+
+    public TextField getWrittenByTextField() {
+        return writtenByTextField;
+    }
+
+    public DatePicker getWriteDatePicker() {
+        return writeDatePicker;
+    }
+
+    public CheckBox getRecommendedCheckBox() {
+        return recommendedCheckBox;
+    }
+
+    public TextField getReviewRating() {
+        return reviewRating;
+    }
+
+    public TextArea getReviewTextArea() {
+        return reviewTextArea;
+    }
+
+    public Button getNewReviewButton() {
+        return newReviewButton;
+    }
+
+    public Button getSaveReviewButton() {
+        return saveReviewButton;
     }
 }

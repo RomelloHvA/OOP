@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>588</y>
+      <x>266</x>
+      <y>686</y>
       <w>147</w>
       <h>91</h>
     </coordinates>
@@ -23,8 +23,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>371</x>
-      <y>588</y>
+      <x>483</x>
+      <y>721</y>
       <w>147</w>
       <h>91</h>
     </coordinates>
@@ -41,22 +41,22 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>308</x>
-      <y>595</y>
-      <w>77</w>
-      <h>35</h>
+      <x>406</x>
+      <y>700</y>
+      <w>91</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 belongsTo
 m1=1
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>315</x>
-      <y>231</y>
+      <x>455</x>
+      <y>98</y>
       <w>203</w>
       <h>147</h>
     </coordinates>
@@ -80,9 +80,9 @@ m2=0..n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>427</x>
-      <y>441</y>
-      <w>203</w>
+      <x>560</x>
+      <y>308</y>
+      <w>105</w>
       <h>42</h>
     </coordinates>
     <panel_attributes>&lt;&lt;views&gt;&gt;
@@ -96,9 +96,9 @@ ReviewView
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>182</x>
-      <y>441</y>
-      <w>203</w>
+      <x>427</x>
+      <y>308</y>
+      <w>105</w>
       <h>42</h>
     </coordinates>
     <panel_attributes>&lt;&lt;views&gt;&gt;
@@ -112,30 +112,30 @@ AnimeSelectorView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>273</x>
-      <y>371</y>
-      <w>126</w>
+      <x>518</x>
+      <y>238</y>
+      <w>21</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>160.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>371</y>
-      <w>91</w>
+      <x>588</x>
+      <y>238</y>
+      <w>21</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>217</x>
-      <y>147</y>
+      <x>343</x>
+      <y>7</y>
       <w>112</w>
       <h>35</h>
     </coordinates>
@@ -148,18 +148,20 @@ Application
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>63</x>
-      <y>224</y>
+      <x>203</x>
+      <y>91</y>
       <w>203</w>
-      <h>70</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>MainApplication
 --
 -TITLE: string
 -WIDTH: int
 -HEIGHT: int
+_-stage: Stage_
 --
 +start(stage: Stage): void
+_+switchController(controller: Controller): void_
 
 </panel_attributes>
     <additional_attributes/>
@@ -167,8 +169,8 @@ Application
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>49</x>
-      <y>336</y>
+      <x>189</x>
+      <y>7</y>
       <w>140</w>
       <h>35</h>
     </coordinates>
@@ -182,19 +184,19 @@ Application
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>287</y>
+      <x>252</x>
+      <y>35</y>
       <w>21</w>
-      <h>63</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>259</x>
-      <y>266</y>
+      <x>399</x>
+      <y>133</y>
       <w>70</w>
       <h>21</h>
     </coordinates>
@@ -204,12 +206,96 @@ Application
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>203</x>
-      <y>175</y>
-      <w>63</w>
-      <h>63</h>
+      <x>371</x>
+      <y>35</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>189</x>
+      <y>196</y>
+      <w>217</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;controllers&gt;&gt;
+/Controller/
+--
+#MAX_RATING: double
+#MIN_RATING: double
+#FIRST_ANIME_RELEASEDATE: LocalDate
+#CURRENT_DATE: LocalDate
+#MIN_EPISODES: int
+#CANT_BE_EMPTY_MESSAGE: String
+--
+/+getView(): View/
+#isEmptyTextField(TextField textField): boolean
+#isEmptyTextArea(TextArea textArea): boolean
+/#emptyAllInputFields(): void/
+/#setAllFieldBorderDefaults(): void/
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>406</y>
+      <w>112</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;controllers&gt;&gt;
+/ReviewController/
+--
+/+getView(): View/
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>189</x>
+      <y>350</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>371</x>
+      <y>350</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>105</x>
+      <y>406</y>
+      <w>112</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;controllers&gt;&gt;
+/AnimeSelectorController/
+--
+
+--
+/+getView(): View/
+
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
