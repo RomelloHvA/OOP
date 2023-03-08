@@ -4,10 +4,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>266</x>
-      <y>686</y>
-      <w>147</w>
-      <h>91</h>
+      <x>7</x>
+      <y>896</y>
+      <w>266</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>Anime
 --
@@ -17,16 +17,21 @@
 -synopsis: String
 -downloaded: boolean
 -watched: boolean
-</panel_attributes>
+--
++Anime(String name, LocalDate releaseDate, int episodes, 
+String synopsis, boolean downloaded, boolean watched)
+
++toStringConfirmMessage(): String
++toString(): String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>483</x>
-      <y>721</y>
-      <w>147</w>
-      <h>91</h>
+      <x>350</x>
+      <y>896</y>
+      <w>294</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>Review
 --
@@ -35,28 +40,33 @@
 -writeDate: LocalDate
 -rating: double
 -review: String
--recommended: boolean</panel_attributes>
+-recommended: boolean
+--
++Review(Anime belongsTo, String writtenBy, LocalDate writeDate, 
+double rating, String review, boolean recommended)
+
++toString(): String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>406</x>
-      <y>700</y>
-      <w>91</w>
-      <h>56</h>
+      <x>266</x>
+      <y>903</y>
+      <w>98</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 belongsTo
 m1=1
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;60.0</additional_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>455</x>
-      <y>98</y>
+      <x>567</x>
+      <y>91</y>
       <w>203</w>
       <h>147</h>
     </coordinates>
@@ -80,14 +90,26 @@ m2=0..n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>308</y>
-      <w>105</w>
-      <h>42</h>
+      <x>672</x>
+      <y>287</y>
+      <w>182</w>
+      <h>175</h>
     </coordinates>
     <panel_attributes>&lt;&lt;views&gt;&gt;
 ReviewView
 --
+-ratingComboBox: ComboBox&lt;Double&gt;
+-animeComboBox: ComboBox&lt;Anime&gt;
+-returnButton: Button
+-deleteReviewButton: Button
+-writtenByTextField: TextField
+-writeDatePicker: DatePicker
+-recommendedCheckBox: CheckBox
+-reviewRating: TextField
+-reviewTextArea: TextArea
+-newReviewButton:Button
+-saveReviewButton: Button
+--
 #initializeView()Parent
 
 </panel_attributes>
@@ -96,13 +118,26 @@ ReviewView
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>427</x>
-      <y>308</y>
-      <w>105</w>
-      <h>42</h>
+      <x>518</x>
+      <y>287</y>
+      <w>140</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>&lt;&lt;views&gt;&gt;
 AnimeSelectorView
+--
+-deleteButton: Button
+-reviewsButton: Button
+-animeNameTextField: TextField
+-releaseDatePicker: DatePicker
+-watchedCheckBox: CheckBox
+-downloadedCheckBox: CheckBox
+-episodeCountTextField: TextField
+-synopsisTextArea: TextArea
+-newButton: Button
+-saveButton: Button
+-animeList: ListView
+-animes: ArrayList
 --
 #initializeView()Parent
 
@@ -112,30 +147,30 @@ AnimeSelectorView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
-      <y>238</y>
+      <x>609</x>
+      <y>231</y>
       <w>21</w>
-      <h>84</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>588</x>
-      <y>238</y>
+      <x>714</x>
+      <y>231</y>
       <w>21</w>
-      <h>84</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>343</x>
-      <y>7</y>
+      <x>301</x>
+      <y>0</y>
       <w>112</w>
       <h>35</h>
     </coordinates>
@@ -148,8 +183,8 @@ Application
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>203</x>
-      <y>91</y>
+      <x>161</x>
+      <y>84</y>
       <w>203</w>
       <h>91</h>
     </coordinates>
@@ -169,8 +204,8 @@ _+switchController(controller: Controller): void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>189</x>
-      <y>7</y>
+      <x>147</x>
+      <y>0</y>
       <w>140</w>
       <h>35</h>
     </coordinates>
@@ -184,8 +219,8 @@ _+switchController(controller: Controller): void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>35</y>
+      <x>210</x>
+      <y>28</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -195,19 +230,19 @@ _+switchController(controller: Controller): void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>399</x>
-      <y>133</y>
-      <w>70</w>
+      <x>357</x>
+      <y>126</y>
+      <w>224</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>300.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>35</y>
+      <x>329</x>
+      <y>28</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -217,8 +252,8 @@ _+switchController(controller: Controller): void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>189</x>
-      <y>196</y>
+      <x>154</x>
+      <y>189</y>
       <w>217</w>
       <h>161</h>
     </coordinates>
@@ -245,15 +280,50 @@ _+switchController(controller: Controller): void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>406</y>
-      <w>112</w>
-      <h>42</h>
+      <x>315</x>
+      <y>399</y>
+      <w>196</w>
+      <h>427</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controllers&gt;&gt;
 /ReviewController/
 --
-/+getView(): View/
+-returnButton: Button
+-deleteButton: Button
+-reviewTextArea: TextArea
+-newReviewButton: Button
+-saveReviewButton: Button
+-recommendedCheckBox: CheckBox
+-reviewRating: TextField
+-writeDatePicker: DatePicker
+-writtenByTextField: TextField
+-reviewView: ReviewView
+-animeSelectorController: Controller
+-deleteAlert: Alert
+-saveSuccesAlert: Alert
+-saveErrorMessage: String
+-writtenBy: String
+-writeDateInput: LocalDate
+-reviewRatingValue: double
+-reviewText: String
+-recommendedCheckBoxValue: boolean
+--
++ReviewController()
++getView(): View
+-handleReturnButtonClick(): void
+-handldeDeleteButtonClick(): void
+-handleNewReviewButtonClick(): void
+-hanldeSaveReviewButtonClick(): void
+-isValidWriteDate(): boolean
+-isValidRating(): boolean
+-isValidReview(): boolean
+#emptyAllInputFields(): void
+#setAllFieldBorderDefaults: void
+-getRecommendedCheckBoxValue(): void
+-addErrorMEssageWrittenBy(): void
+-addErrorMessageWriteDate(): void
+-addErrorMessageRating(): void
+-addErrorMessageReview(): void
 
 </panel_attributes>
     <additional_attributes/>
@@ -261,8 +331,8 @@ _+switchController(controller: Controller): void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
-      <y>350</y>
+      <x>154</x>
+      <y>343</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -272,8 +342,8 @@ _+switchController(controller: Controller): void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>350</y>
+      <x>336</x>
+      <y>343</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -283,19 +353,76 @@ _+switchController(controller: Controller): void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>105</x>
-      <y>406</y>
-      <w>112</w>
-      <h>42</h>
+      <x>70</x>
+      <y>399</y>
+      <w>196</w>
+      <h>441</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controllers&gt;&gt;
-/AnimeSelectorController/
+AnimeSelectorController
 --
+-reviewsButton: Button
+-newButton: Button
+-saveButton: Button
+-deleteButton: Button
+-animeSelectorView: AnimeSelectorView
+-invalidInputAlert: Alert
+-animeName: String
+-animeReleaseDate: LocalDate
+-watchedValue: boolean
+-downloadedValue: boolean
+-episodeCount: int
+-synopsis: String
+-animeNameTextField: TextField
+-releaseDatePicker: DatePicker
+-episodeCountTextField: TextField
+-synopsisTextArea: TextArea
+-watchedCheckBox: CheckBox
+-downloadedCheckBox: CheckBox
+-animeListView: ListView
+--
++AnimeSelectorController()
++getView(): View
+-handleReviewButtonClick(): void
+-handleNewAnimeButtonClick(): void
+-handleSaveNewAnimeChanges(): void
+-handleDeleteButtonClick(): void
+-isEmptyAnimeName(): boolean
+-isValidReleaseDate(): boolean
+-getCheckBoxesValue(): void
+-isValidEpisodeCount(): boolean
+-isValidSynopsis(): boolean
+#emptyAllInputFields(): void
+#setAllFieldBorderDefaults(): void
+-addErrorMessageReleaseDate() void
+-addErrorMessageAnimeName(): void
+-addErrorMessageEpisodeCount(): void
+-addErrorMessageEmptySynopsis(): void
 
---
-/+getView(): View/
 
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>406</x>
+      <y>819</y>
+      <w>21</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>147</x>
+      <y>833</y>
+      <w>21</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
 </diagram>

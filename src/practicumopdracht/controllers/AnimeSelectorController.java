@@ -1,5 +1,6 @@
 package practicumopdracht.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.Border;
 import javafx.scene.paint.Color;
@@ -9,6 +10,7 @@ import practicumopdracht.views.AnimeSelectorView;
 import practicumopdracht.views.View;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class AnimeSelectorController extends Controller{
@@ -18,14 +20,14 @@ public class AnimeSelectorController extends Controller{
     private  Button saveButton;
     private  Button deleteButton;
     private final AnimeSelectorView animeSelectorView;
-    private Alert alert;
+    private Alert invalidInputAlert;
     private String errorMessage;
     private String confirmNewAnimeText;
     private Alert confirmNewAnimeAlert;
     private String animeName;
     private LocalDate animeReleaseDate;
-    private boolean watchedCheckbox;
-    private boolean downloadedCheckbox;
+    private boolean watchedValue;
+    private boolean downloadedValue;
     private int episodeCount;
     private String synopsis;
     private TextField animeNameTextField;
@@ -35,6 +37,7 @@ public class AnimeSelectorController extends Controller{
     private CheckBox watchedCheckBox;
     private CheckBox downloadedCheckBox;
     private ListView<Anime> animeListView;
+    private ArrayList<Anime> animes;
 
     public AnimeSelectorController() {
         this.animeSelectorView = new AnimeSelectorView();
@@ -50,6 +53,7 @@ public class AnimeSelectorController extends Controller{
         episodeCountTextField = animeSelectorView.getEpisodeCountTextField();
         saveButton = animeSelectorView.getSaveButton();
         deleteButton = animeSelectorView.getDeleteButton();
+        animes = animeSelectorView.getAnimes();
         animeListView = animeSelectorView.getAnimeList();
 
 
@@ -57,7 +61,7 @@ public class AnimeSelectorController extends Controller{
         errorMessage = "Please enter valid\n";
         confirmNewAnimeText = "Confirm new Anime/Save Changes?\n";
 
-        this.alert = new Alert(Alert.AlertType.WARNING);
+        this.invalidInputAlert = new Alert(Alert.AlertType.WARNING);
         this.confirmNewAnimeAlert = new Alert(Alert.AlertType.CONFIRMATION);
 
         reviewsButton.setOnMouseClicked(mouseEvent -> handleReviewButtonClick());
@@ -92,14 +96,14 @@ public class AnimeSelectorController extends Controller{
 
             // Checks all the fields for valid input before proceeding.
         if (emptyAnimeName || !validReleaseDate || !isValidEpisodeCount || !isValidSynopis){
-            alert.setContentText(errorMessage);
-            alert.show();
+            invalidInputAlert.setContentText(errorMessage);
+            invalidInputAlert.show();
             errorMessage = "Please enter valid:\n";
 
             // new Anime will be added if none is selected.
         } else if (animeFromListView == null) {
             getCheckBoxesValue();
-            Anime anime = new Anime(animeName,animeReleaseDate,episodeCount,synopsis,downloadedCheckbox,watchedCheckbox);
+            Anime anime = new Anime(animeName,animeReleaseDate,episodeCount,synopsis, downloadedValue, watchedValue);
             confirmNewAnimeText += anime.toStringConfirmMessage();
             confirmNewAnimeAlert.setContentText(confirmNewAnimeText);
             Optional<ButtonType> buttonResult = confirmNewAnimeAlert.showAndWait();
@@ -120,9 +124,9 @@ public class AnimeSelectorController extends Controller{
         } else {
             Anime selectedAnime = animeListView.getSelectionModel().getSelectedItem();
             selectedAnime.setName(animeName);
-            selectedAnime.setDownloaded(downloadedCheckbox);
+            selectedAnime.setDownloaded(downloadedValue);
             selectedAnime.setEpisodes(episodeCount);
-            selectedAnime.setWatched(watchedCheckbox);
+            selectedAnime.setWatched(watchedValue);
             selectedAnime.setReleaseDate(animeReleaseDate);
             selectedAnime.setSynopsis(synopsis);
             animeListView.refresh();
@@ -173,8 +177,8 @@ public class AnimeSelectorController extends Controller{
 
     private void getCheckBoxesValue(){
 
-        watchedCheckbox = watchedCheckBox.isSelected();
-        downloadedCheckbox = downloadedCheckBox.isSelected();
+        watchedValue = watchedCheckBox.isSelected();
+        downloadedValue = downloadedCheckBox.isSelected();
     }
 
     private boolean isValidEpisodeCount(){

@@ -28,9 +28,9 @@ public class ReviewController extends Controller{
     private Alert saveErrorAlert;
     private Alert saveSuccesAlert;
     private String saveErrorMessage;
-    private String validWrittenBy;
+    private String writtenBy;
     private LocalDate writeDateInput;
-    private double validReviewRating;
+    private double reviewRatingValue;
     private String reviewText;
     private boolean recommendedCheckBoxValue;
 
@@ -91,7 +91,7 @@ public class ReviewController extends Controller{
 
             getRecommendedCheckBoxValue();
             Anime testAnime = new Anime("test", CURRENT_DATE, 5, "", true, true);
-            Review review = new Review(testAnime,validWrittenBy,writeDateInput,validReviewRating,reviewText,
+            Review review = new Review(testAnime, writtenBy,writeDateInput, reviewRatingValue,reviewText,
                     recommendedCheckBoxValue);
 
             String saveSuccesMessage = "Confirm new review/Changes?\n" + review.toString();
@@ -108,7 +108,7 @@ public class ReviewController extends Controller{
             addErrorMessageWrittenBy();
         } else {
             writtenByTextField.setBorder(Border.stroke(Color.LIGHTGREEN));
-            validWrittenBy = writtenByTextField.getText();
+            writtenBy = writtenByTextField.getText();
         }
         return isEmpty;
     }
@@ -142,7 +142,7 @@ public class ReviewController extends Controller{
                 addErrorMessageRating();
             } else {
 
-                validReviewRating = reviewRating;
+                reviewRatingValue = reviewRating;
                 this.reviewRating.setBorder(Border.stroke(Color.LIGHTGREEN));
                 isValid = true;
             }

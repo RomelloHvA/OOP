@@ -23,7 +23,7 @@ public class AnimeSelectorView extends View{
     private Button newButton;
     private Button saveButton;
     private ListView<Anime> animeList;
-    private ArrayList<Anime> animeArrayList;
+    private ArrayList<Anime> animes;
 
 
 
@@ -31,7 +31,7 @@ public class AnimeSelectorView extends View{
 
     @Override
     protected Parent initializeView() {
-        animeArrayList = new ArrayList<>();
+        animes = new ArrayList<>();
 
         VBox masterBox = new VBox();
         masterBox.setSpacing(DEFAULT_SPACING);
@@ -43,7 +43,7 @@ public class AnimeSelectorView extends View{
 
 //        List view
         animeList = new ListView<>();
-        animeList.getItems().addAll(animeArrayList);
+        animeList.getItems().addAll(animes);
 
         animeList.setMinWidth(DEFAULT_WIDTH_LIST);
         animeList.setMaxWidth(DEFAULT_WIDTH_LIST);
@@ -132,7 +132,9 @@ public class AnimeSelectorView extends View{
         return animeList;
     }
 
-
+    public ArrayList<Anime> getAnimes() {
+        return animes;
+    }
 
     public Button getDeleteButton() {
         return deleteButton;
