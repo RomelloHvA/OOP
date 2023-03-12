@@ -20,7 +20,6 @@ public class MainApplication extends Application {
         if(!Main.launchedFromMain) {
             System.err.println("Je moet deze applicatie opstarten vanuit de Main-class, niet de MainApplication-class!");
             System.exit(1337);
-
             return;
         }
         AnimeSelectorController animeSelectorController = new AnimeSelectorController();

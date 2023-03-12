@@ -1,5 +1,6 @@
 package practicumopdracht.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.Border;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 public class AnimeSelectorController extends Controller{
 
+    private final ObservableList<Anime> animeObservableList;
     private  Button reviewsButton;
     private  Button newButton;
     private  Button saveButton;
@@ -53,8 +55,11 @@ public class AnimeSelectorController extends Controller{
         episodeCountTextField = animeSelectorView.getEpisodeCountTextField();
         saveButton = animeSelectorView.getSaveButton();
         deleteButton = animeSelectorView.getDeleteButton();
-        animes = animeSelectorView.getAnimes();
+
+        animes = new ArrayList<>();
+        animeObservableList = FXCollections.observableArrayList(animes);
         animeListView = animeSelectorView.getAnimeList();
+        animeListView.getItems().addAll(animeObservableList);
 
 
 
@@ -85,6 +90,8 @@ public class AnimeSelectorController extends Controller{
         animeListView.getSelectionModel().select(null);
         emptyAllInputFields();
         setAllFieldBorderDefaults();
+        confirmNewAnimeText = "Confirm new Anime/Save Changes?\n";
+        confirmNewAnimeAlert.setContentText(confirmNewAnimeText);
     }
 
     private void handleSaveNewAnimeChanges(){
@@ -102,19 +109,25 @@ public class AnimeSelectorController extends Controller{
 
             // new Anime will be added if none is selected.
         } else if (animeFromListView == null) {
+
             getCheckBoxesValue();
             Anime anime = new Anime(animeName,animeReleaseDate,episodeCount,synopsis, downloadedValue, watchedValue);
             confirmNewAnimeText += anime.toStringConfirmMessage();
             confirmNewAnimeAlert.setContentText(confirmNewAnimeText);
             Optional<ButtonType> buttonResult = confirmNewAnimeAlert.showAndWait();
 
+
             if (buttonResult.isEmpty()){
                 System.out.println("Niks geklikt");
             } else if (buttonResult.get() == ButtonType.OK) {
 
+
+                animeObservableList.add(anime);
                 animeListView.getItems().add(anime);
                 animeListView.refresh();
                 animeListView.getSelectionModel().selectLast();
+                System.out.println( "ListView " + animeListView.getItems());
+                System.out.println("ObservableList" + animeObservableList.size());
 
             } else if (buttonResult.get() == ButtonType.CANCEL) {
                 System.out.println("Cancel geklikt");
@@ -122,6 +135,13 @@ public class AnimeSelectorController extends Controller{
 
             // Changes will be saved for the selected Anime.
         } else {
+
+            String changedFieldsMessage =   "name: " + animeName + '\n' +
+                                            "releaseDate: " + animeReleaseDate +"\n" +
+                                            "episodes: " + episodeCount +  "\n" +
+                                            "downloaded: " + downloadedValue + "\n" +
+                                            "watched: " + watchedValue;
+
             Anime selectedAnime = animeListView.getSelectionModel().getSelectedItem();
             selectedAnime.setName(animeName);
             selectedAnime.setDownloaded(downloadedValue);
@@ -130,7 +150,8 @@ public class AnimeSelectorController extends Controller{
             selectedAnime.setReleaseDate(animeReleaseDate);
             selectedAnime.setSynopsis(synopsis);
             animeListView.refresh();
-            confirmNewAnimeAlert.setContentText(confirmNewAnimeText);
+
+            confirmNewAnimeAlert.setContentText(changedFieldsMessage);
             confirmNewAnimeAlert.show();
 
         }
