@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Border;
 import javafx.scene.paint.Color;
 import practicumopdracht.MainApplication;
+import practicumopdracht.data.AnimeDAO;
+import practicumopdracht.data.DAO;
 import practicumopdracht.models.Anime;
 import practicumopdracht.views.AnimeSelectorView;
 import practicumopdracht.views.View;
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class AnimeSelectorController extends Controller{
 
     private final ObservableList<Anime> animeObservableList;
+    private DAO<Anime> animeDAO;
     private  Button reviewsButton;
     private  Button newButton;
     private  Button saveButton;
@@ -39,7 +42,7 @@ public class AnimeSelectorController extends Controller{
     private CheckBox watchedCheckBox;
     private CheckBox downloadedCheckBox;
     private ListView<Anime> animeListView;
-    private ArrayList<Anime> animes;
+
 
     public AnimeSelectorController() {
         this.animeSelectorView = new AnimeSelectorView();
@@ -56,10 +59,12 @@ public class AnimeSelectorController extends Controller{
         saveButton = animeSelectorView.getSaveButton();
         deleteButton = animeSelectorView.getDeleteButton();
 
-        animes = new ArrayList<>();
-        animeObservableList = FXCollections.observableArrayList(animes);
+        animeDAO = new AnimeDAO();
+        animeDAO.load();
+
+        animeObservableList = FXCollections.observableArrayList(animeDAO.getAll());
         animeListView = animeSelectorView.getAnimeList();
-        animeListView.getItems().addAll(animeObservableList);
+        animeListView.setItems(animeObservableList);
 
 
 
@@ -74,6 +79,17 @@ public class AnimeSelectorController extends Controller{
         saveButton.setOnMouseClicked(mouseEvent -> handleSaveNewAnimeChanges());
         deleteButton.setOnMouseClicked(mouseEvent -> handleDeleteButtonClick());
 
+        animeListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldAnime, newAnime) -> {
+            if (newAnime != null) {
+                animeNameTextField.setText(newAnime.getName());
+                releaseDatePicker.setValue(newAnime.getReleaseDate());
+                watchedCheckBox.setSelected(newAnime.isWatched());
+                downloadedCheckBox.setSelected(newAnime.isDownloaded());
+                episodeCountTextField.setText(String.valueOf(newAnime.getEpisodes()));
+                synopsisTextArea.setText(newAnime.getSynopsis());
+            }
+        } );
+
     }
 
     @Override
@@ -87,7 +103,7 @@ public class AnimeSelectorController extends Controller{
     }
 
     private void handleNewAnimeButtonClick(){
-        animeListView.getSelectionModel().select(null);
+        animeListView.getSelectionModel().clearSelection();
         emptyAllInputFields();
         setAllFieldBorderDefaults();
         confirmNewAnimeText = "Confirm new Anime/Save Changes?\n";
@@ -123,7 +139,7 @@ public class AnimeSelectorController extends Controller{
 
 
                 animeObservableList.add(anime);
-                animeListView.getItems().add(anime);
+                animeDAO.addOrUpdate(anime);
                 animeListView.refresh();
                 animeListView.getSelectionModel().selectLast();
                 System.out.println( "ListView " + animeListView.getItems());
@@ -149,6 +165,7 @@ public class AnimeSelectorController extends Controller{
             selectedAnime.setWatched(watchedValue);
             selectedAnime.setReleaseDate(animeReleaseDate);
             selectedAnime.setSynopsis(synopsis);
+            animeDAO.addOrUpdate(selectedAnime);
             animeListView.refresh();
 
             confirmNewAnimeAlert.setContentText(changedFieldsMessage);
@@ -160,8 +177,15 @@ public class AnimeSelectorController extends Controller{
         }
 
         private void handleDeleteButtonClick(){
-        Alert deleteButtonAlert = new Alert(Alert.AlertType.INFORMATION, "Delete button clicked");
-        deleteButtonAlert.show();
+        Alert deleteButtonAlert = new Alert(Alert.AlertType.INFORMATION, "Anime deleted.");
+        Anime selectedAnime = animeListView.getSelectionModel().getSelectedItem();
+
+        if (selectedAnime != null){
+            animeListView.getItems().remove(selectedAnime);
+            animeDAO.delete(selectedAnime);
+            deleteButtonAlert.show();
+        }
+
         }
 
     private boolean isEmptyAnimeName(){

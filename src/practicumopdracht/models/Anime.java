@@ -37,6 +37,26 @@ public class Anime {
         return name;
     }
 
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public int getEpisodes() {
+        return episodes;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public boolean isDownloaded() {
+        return downloaded;
+    }
+
+    public boolean isWatched() {
+        return watched;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
