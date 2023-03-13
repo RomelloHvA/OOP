@@ -21,6 +21,7 @@ public class ReviewView extends View {
     private TextArea reviewTextArea;
     private Button newReviewButton;
     private Button saveReviewButton;
+    private ListView<Review> reviewListView;
 
 
 
@@ -43,7 +44,7 @@ public class ReviewView extends View {
 
 
         HBox reviewListAndButtonBox = new HBox();
-        ListView<Review> reviewListView = new ListView<>();
+        reviewListView = new ListView<>();
         reviewListView.setMinWidth(DEFAULT_WIDTH_LIST);
         reviewListView.setMaxWidth(DEFAULT_WIDTH_LIST);
         reviewListView.setMinHeight(DEFAULT_HEIGT_LIST);
@@ -156,5 +157,8 @@ public class ReviewView extends View {
 
     public Button getSaveReviewButton() {
         return saveReviewButton;
+    }
+    public ListView<Review> getReviewListView() {
+        return reviewListView;
     }
 }

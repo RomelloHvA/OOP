@@ -59,8 +59,7 @@ public class AnimeSelectorController extends Controller{
         saveButton = animeSelectorView.getSaveButton();
         deleteButton = animeSelectorView.getDeleteButton();
 
-        animeDAO = new AnimeDAO();
-        animeDAO.load();
+        animeDAO = MainApplication.getAnimeDAO();
 
         animeObservableList = FXCollections.observableArrayList(animeDAO.getAll());
         animeListView = animeSelectorView.getAnimeList();
@@ -98,8 +97,15 @@ public class AnimeSelectorController extends Controller{
     }
 
     private void handleReviewButtonClick(){
-        ReviewController reviewController = new ReviewController();
-        MainApplication.switchController(reviewController);
+        Anime selectedAnime = animeListView.getSelectionModel().getSelectedItem();
+
+        if (selectedAnime != null){
+            ReviewController reviewController = new ReviewController(selectedAnime);
+            MainApplication.switchController(reviewController);
+        } else {
+            System.out.println("Nothing selectedddd");
+        }
+
     }
 
     private void handleNewAnimeButtonClick(){
@@ -109,6 +115,7 @@ public class AnimeSelectorController extends Controller{
         confirmNewAnimeText = "Confirm new Anime/Save Changes?\n";
         confirmNewAnimeAlert.setContentText(confirmNewAnimeText);
     }
+
 
     private void handleSaveNewAnimeChanges(){
         boolean emptyAnimeName = isEmptyAnimeName();
@@ -307,5 +314,9 @@ public class AnimeSelectorController extends Controller{
     private void addErrorMessageEmptySynopsis(){
         errorMessage += "Synopsis: "+ CANT_BE_EMPTY_MESSAGE;
         animeSelectorView.getSynopsisTextArea().setBorder(Border.stroke(Color.ORANGE));
+    }
+
+    public ObservableList<Anime> getAnimeObservableList() {
+        return animeObservableList;
     }
 }

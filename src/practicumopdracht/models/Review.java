@@ -23,11 +23,63 @@ public class Review {
 
     @Override
     public String toString() {
+        return String.format("Author: %s\nWrite Date: %s\nRating: %.1f\n",writtenBy,writeDate,rating);
+    }
+
+    public String toStringConfirmMessage() {
         return "For anime: " + belongsTo.getName() +
                 "\nWritten by: " + writtenBy +
                 "\nWrite date: " + writeDate +
                 "\nRating: " + rating +
                 "\nReview: " + review +
                 "\nRecommended=" + recommended;
+    }
+
+    public void setBelongsTo(Anime belongsTo) {
+        this.belongsTo = belongsTo;
+    }
+
+    public void setWrittenBy(String writtenBy) {
+        this.writtenBy = writtenBy;
+    }
+
+    public void setWriteDate(LocalDate writeDate) {
+        this.writeDate = writeDate;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
+    public void setRecommended(boolean recommended) {
+        this.recommended = recommended;
+    }
+
+    public Anime getBelongsTo() {
+        return belongsTo;
+    }
+
+    public String getWrittenBy() {
+        return writtenBy;
+    }
+
+    public LocalDate getWriteDate() {
+        return writeDate;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public boolean isRecommended() {
+        return recommended;
     }
 }

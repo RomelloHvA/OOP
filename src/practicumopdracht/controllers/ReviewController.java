@@ -1,20 +1,26 @@
 package practicumopdracht.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.Border;
 import javafx.scene.paint.Color;
 import practicumopdracht.MainApplication;
+import practicumopdracht.data.DAO;
+import practicumopdracht.data.ReviewDAO;
 import practicumopdracht.models.Anime;
 import practicumopdracht.models.Review;
 import practicumopdracht.views.ReviewView;
 import practicumopdracht.views.View;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ReviewController extends Controller{
 
     private final Button returnButton;
     private final Button deleteButton;
+    private final ObservableList reviewObservableList;
     private TextArea reviewTextArea;
     private final Button newReviewButton;
     private final Button saveReviewButton;
@@ -23,7 +29,7 @@ public class ReviewController extends Controller{
     private DatePicker writeDatePicker;
     private TextField writtenByTextField;
     private ReviewView reviewView;
-    private Controller animeSelectorController;
+    private AnimeSelectorController animeSelectorController;
     private Alert deleteAlert;
     private Alert saveErrorAlert;
     private Alert saveSuccesAlert;
@@ -33,10 +39,15 @@ public class ReviewController extends Controller{
     private double reviewRatingValue;
     private String reviewText;
     private boolean recommendedCheckBoxValue;
+    private ListView<Review> reviewListView;
+//    private ReviewDAO<Review> reviewDAO;
+    private ReviewDAO reviewDAO;
+    private ComboBox<Anime> animeComboBox;
+    private Anime selectedAnime;
 
 
-
-    public ReviewController(){
+    public ReviewController(Anime selectedAnime){
+        this.selectedAnime = selectedAnime;
         this.reviewView = new ReviewView();
 
         returnButton = this.reviewView.getReturnButton();
@@ -51,18 +62,40 @@ public class ReviewController extends Controller{
         saveReviewButton = this.reviewView.getSaveReviewButton();
         saveErrorMessage = "Please check:\n";
         saveErrorAlert = new Alert(Alert.AlertType.ERROR);
+        animeComboBox = reviewView.getAnimeComboBox();
+        this.animeSelectorController = new AnimeSelectorController();
+        animeComboBox.getSelectionModel().select(selectedAnime);
+        setAnimeComboBox();
+
+
+        reviewDAO = (ReviewDAO) MainApplication.getReviewDAO();
+
+        reviewObservableList = FXCollections.observableArrayList(reviewDAO.getAll());
+        reviewListView = reviewView.getReviewListView();
+        reviewListView.setItems(reviewObservableList);
+
 
         returnButton.setOnMouseClicked(mouseEvent -> handleReturnButtonClick());
         deleteButton.setOnMouseClicked(mouseEvent -> handleDeleteButtonClick());
         newReviewButton.setOnMouseClicked(mouseEvent -> handleNewReviewButtonClick());
         saveReviewButton.setOnMouseClicked(mouseEvent -> handleSaveReviewButtonClick());
+
+
+        reviewListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldReview, newReview) ->{
+            if (newReview != null){
+                writtenByTextField.setText(newReview.getWrittenBy());
+                writeDatePicker.setValue(newReview.getWriteDate());
+                recommendedCheckBox.setSelected(newReview.isRecommended());
+                reviewTextArea.setText(newReview.getReview());
+                reviewRating.setText(String.valueOf(newReview.getRating()));
+            }
+        } );
     }
     public View getView() {
         return this.reviewView;
     }
 
     private void handleReturnButtonClick(){
-        this.animeSelectorController = new AnimeSelectorController();
         MainApplication.switchController(animeSelectorController);
 
     }
@@ -94,12 +127,16 @@ public class ReviewController extends Controller{
             Review review = new Review(testAnime, writtenBy,writeDateInput, reviewRatingValue,reviewText,
                     recommendedCheckBoxValue);
 
-            String saveSuccesMessage = "Confirm new review/Changes?\n" + review.toString();
+            String saveSuccesMessage = "Confirm new review/Changes?\n" + review.toStringConfirmMessage();
             saveSuccesAlert = new Alert(Alert.AlertType.CONFIRMATION, saveSuccesMessage);
             saveSuccesAlert.show();
             emptyAllInputFields();
             setAllFieldBorderDefaults();
         }
+    }
+
+    private void setAnimeComboBox(){
+        animeComboBox.setItems(this.animeSelectorController.getAnimeObservableList());
     }
 
     private boolean isEmptywrittenBy(){

@@ -10,6 +10,15 @@ public class AnimeDAO  implements DAO<Anime> {
 
     private ArrayList<Anime> animeArrayList;
 
+    public Anime getByID(int index){
+        for (int i = 0; i < animeArrayList.size(); i++) {
+            if (index == i){
+                return animeArrayList.get(i);
+            }
+        }
+        return null;
+    }
+
     public AnimeDAO(){
         animeArrayList = new ArrayList<>();
     }
@@ -40,14 +49,7 @@ public class AnimeDAO  implements DAO<Anime> {
     @Override
     public boolean load() {
 
-        Anime firstAnime = new Anime("Bleach", LocalDate.now(),12,"Dead samurai",true,true);
-        Anime secondAnime = new Anime("Naruto", LocalDate.now(),700,"God ninja",false,true);
-        Anime thirdAnime = new Anime("One Piece", LocalDate.now(),1000,"Pirates",false,false);
-
-        animeArrayList.add(firstAnime);
-        animeArrayList.add(secondAnime);
-        animeArrayList.add(thirdAnime);
-
         return true;
     }
+
 }
