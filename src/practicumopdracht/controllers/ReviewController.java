@@ -15,12 +15,13 @@ import practicumopdracht.views.View;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ReviewController extends Controller{
 
     private final Button returnButton;
     private final Button deleteButton;
-    private final ObservableList reviewObservableList;
+    private ObservableList<Review> reviewObservableList;
     private TextArea reviewTextArea;
     private final Button newReviewButton;
     private final Button saveReviewButton;
@@ -30,7 +31,6 @@ public class ReviewController extends Controller{
     private TextField writtenByTextField;
     private ReviewView reviewView;
     private AnimeSelectorController animeSelectorController;
-    private Alert deleteAlert;
     private Alert saveErrorAlert;
     private Alert saveSuccesAlert;
     private String saveErrorMessage;
@@ -40,7 +40,6 @@ public class ReviewController extends Controller{
     private String reviewText;
     private boolean recommendedCheckBoxValue;
     private ListView<Review> reviewListView;
-//    private ReviewDAO<Review> reviewDAO;
     private ReviewDAO reviewDAO;
     private ComboBox<Anime> animeComboBox;
     private Anime selectedAnime;
@@ -67,10 +66,11 @@ public class ReviewController extends Controller{
         animeComboBox.getSelectionModel().select(selectedAnime);
         setAnimeComboBox();
 
+        reviewDAO = MainApplication.getReviewDAO();
 
-        reviewDAO = (ReviewDAO) MainApplication.getReviewDAO();
 
-        reviewObservableList = FXCollections.observableArrayList(reviewDAO.getAll());
+
+        reviewObservableList = FXCollections.observableArrayList(reviewDAO.getAllFor(selectedAnime));
         reviewListView = reviewView.getReviewListView();
         reviewListView.setItems(reviewObservableList);
 
@@ -80,7 +80,7 @@ public class ReviewController extends Controller{
         newReviewButton.setOnMouseClicked(mouseEvent -> handleNewReviewButtonClick());
         saveReviewButton.setOnMouseClicked(mouseEvent -> handleSaveReviewButtonClick());
 
-
+        // Fills in all the fields
         reviewListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldReview, newReview) ->{
             if (newReview != null){
                 writtenByTextField.setText(newReview.getWrittenBy());
@@ -89,7 +89,12 @@ public class ReviewController extends Controller{
                 reviewTextArea.setText(newReview.getReview());
                 reviewRating.setText(String.valueOf(newReview.getRating()));
             }
-        } );
+        });
+
+        animeComboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldAnime, newAnime) -> {
+            reviewObservableList = FXCollections.observableArrayList(reviewDAO.getAllFor(newAnime));
+            reviewListView.setItems(reviewObservableList);
+        });
     }
     public View getView() {
         return this.reviewView;
@@ -100,38 +105,92 @@ public class ReviewController extends Controller{
 
     }
     private void handleDeleteButtonClick(){
-        deleteAlert = new Alert(Alert.AlertType.CONFIRMATION,"Delete review?");
+        Review selectedReview = reviewListView.getSelectionModel().getSelectedItem();
+        try {
+            Alert deleteButtonAlert = new Alert(Alert.AlertType.CONFIRMATION, "Delete selected review: " + selectedReview.toStringConfirmMessage());
+            Optional<ButtonType> buttonResult = deleteButtonAlert.showAndWait();
+            if (buttonResult.isEmpty()) {
+                System.out.println("Niks geklikt");
+
+            } else if (buttonResult.get() == ButtonType.OK) {
+
+               reviewListView.getItems().remove(selectedReview);
+                reviewDAO.delete(selectedReview);
+                reviewListView.refresh();
+
+
+            } else if (buttonResult.get() == ButtonType.CANCEL) {
+                System.out.println("Cancel geklikt");
+            }
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Nothing deleted");
+            alert.show();
+            return;
+        }
+        Alert deleteAlert = new Alert(Alert.AlertType.CONFIRMATION, "Delete review?");
         emptyAllInputFields();
         setAllFieldBorderDefaults();
-        deleteAlert.showAndWait();
+
+        reviewListView.getItems().remove(selectedReview);
+        reviewDAO.delete(selectedReview);
     }
     private void handleNewReviewButtonClick(){
+
+        reviewListView.getSelectionModel().clearSelection();
         emptyAllInputFields();
         setAllFieldBorderDefaults();
     }
 
     private void handleSaveReviewButtonClick(){
+
         boolean emptyWrittenBy = isEmptywrittenBy();
         boolean isValidWriteDate = isValidWriteDate();
         boolean isValidRating = isValidRating();
         boolean isValidReview = isValidReview();
+        Review reviewFromListView = reviewListView.getSelectionModel().getSelectedItem();
+        saveSuccesAlert = new Alert(Alert.AlertType.CONFIRMATION);
+
 
         if (emptyWrittenBy || !isValidWriteDate || !isValidRating || !isValidReview){
             saveErrorAlert.setContentText(saveErrorMessage);
             saveErrorAlert.show();
             saveErrorMessage = "Please check:\n";
-        } else {
+
+        } else if (reviewFromListView == null){
 
             getRecommendedCheckBoxValue();
-            Anime testAnime = new Anime("test", CURRENT_DATE, 5, "", true, true);
-            Review review = new Review(testAnime, writtenBy,writeDateInput, reviewRatingValue,reviewText,
+            Review review = new Review(selectedAnime, writtenBy,writeDateInput, reviewRatingValue,reviewText,
                     recommendedCheckBoxValue);
+            reviewObservableList.add(review);
+            reviewDAO.addOrUpdate(review);
+            reviewListView.refresh();
 
             String saveSuccesMessage = "Confirm new review/Changes?\n" + review.toStringConfirmMessage();
-            saveSuccesAlert = new Alert(Alert.AlertType.CONFIRMATION, saveSuccesMessage);
+            saveSuccesAlert.setContentText(saveSuccesMessage);
             saveSuccesAlert.show();
             emptyAllInputFields();
             setAllFieldBorderDefaults();
+
+        } else {
+            String changedFieldsMessage = "Author: " + writtenBy +
+                    "\nWrite date: " + writeDateInput +
+                    "\nRecommended: " + recommendedCheckBoxValue +
+                    "\nRating: " + reviewRatingValue +
+                    "Review: " + reviewText;
+
+
+            saveSuccesAlert.setContentText(changedFieldsMessage);
+            saveSuccesAlert.show();
+
+            reviewFromListView.setWrittenBy(writtenBy);
+            reviewFromListView.setWriteDate(writeDateInput);
+            reviewFromListView.setRecommended(recommendedCheckBoxValue);
+            reviewFromListView.setRating(reviewRatingValue);
+            reviewFromListView.setReview(reviewText);
+            reviewDAO.addOrUpdate(reviewFromListView);
+            reviewListView.refresh();
+
         }
     }
 

@@ -14,8 +14,10 @@ public class MainApplication extends Application {
     private final String TITLE = Main.studentNaam;
     private final int WIDTH = 640;
     private final int HEIGHT = 480;
-    private static DAO<Anime> animeDAO;
+    private static AnimeDAO animeDAO;
     private static ReviewDAO reviewDAO;
+
+
 
 
     private static Stage stage;
@@ -27,6 +29,7 @@ public class MainApplication extends Application {
         animeDAO.load();
         reviewDAO = new ReviewDummyDAO();
         reviewDAO.load();
+
 
         if(!Main.launchedFromMain) {
             System.err.println("Je moet deze applicatie opstarten vanuit de Main-class, niet de MainApplication-class!");
@@ -48,11 +51,11 @@ public class MainApplication extends Application {
 
     }
 
-    public static DAO<Anime> getAnimeDAO() {
+    public static AnimeDAO getAnimeDAO() {
         return animeDAO;
     }
 
-    public static DAO<Review> getReviewDAO() {
+    public static ReviewDAO getReviewDAO() {
         return reviewDAO;
     }
 }

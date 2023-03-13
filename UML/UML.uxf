@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>7</x>
-      <y>896</y>
+      <x>406</x>
+      <y>1085</y>
       <w>266</w>
       <h>154</h>
     </coordinates>
@@ -28,8 +28,8 @@ String synopsis, boolean downloaded, boolean watched)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>896</y>
+      <x>756</x>
+      <y>1085</y>
       <w>294</w>
       <h>154</h>
     </coordinates>
@@ -51,22 +51,22 @@ double rating, String review, boolean recommended)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>266</x>
-      <y>903</y>
-      <w>98</w>
+      <x>665</x>
+      <y>1092</y>
+      <w>105</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 belongsTo
 m1=1
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
-      <y>91</y>
+      <x>973</x>
+      <y>252</y>
       <w>203</w>
       <h>147</h>
     </coordinates>
@@ -90,8 +90,8 @@ m2=0..n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>672</x>
-      <y>287</y>
+      <x>1078</x>
+      <y>448</y>
       <w>182</w>
       <h>175</h>
     </coordinates>
@@ -118,8 +118,8 @@ ReviewView
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
-      <y>287</y>
+      <x>924</x>
+      <y>448</y>
       <w>140</w>
       <h>182</h>
     </coordinates>
@@ -147,8 +147,8 @@ AnimeSelectorView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>609</x>
-      <y>231</y>
+      <x>1015</x>
+      <y>392</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -158,8 +158,8 @@ AnimeSelectorView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>714</x>
-      <y>231</y>
+      <x>1120</x>
+      <y>392</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -169,8 +169,8 @@ AnimeSelectorView
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>301</x>
-      <y>0</y>
+      <x>742</x>
+      <y>133</y>
       <w>112</w>
       <h>35</h>
     </coordinates>
@@ -183,10 +183,10 @@ Application
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>161</x>
-      <y>84</y>
+      <x>574</x>
+      <y>182</y>
       <w>203</w>
-      <h>91</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>MainApplication
 --
@@ -194,9 +194,13 @@ Application
 -WIDTH: int
 -HEIGHT: int
 _-stage: Stage_
+_-animeDAO: AnimeDAO_
+_-reviewDAO: reviewDAO_
 --
 +start(stage: Stage): void
 _+switchController(controller: Controller): void_
+_+getAnimeDAO_
+_+getReviewDAO_
 
 </panel_attributes>
     <additional_attributes/>
@@ -204,8 +208,8 @@ _+switchController(controller: Controller): void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>147</x>
-      <y>0</y>
+      <x>532</x>
+      <y>126</y>
       <w>140</w>
       <h>35</h>
     </coordinates>
@@ -219,41 +223,41 @@ _+switchController(controller: Controller): void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>28</y>
-      <w>21</w>
-      <h>70</h>
+      <x>595</x>
+      <y>154</y>
+      <w>49</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>50.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>357</x>
-      <y>126</y>
-      <w>224</w>
-      <h>21</h>
+      <x>770</x>
+      <y>224</y>
+      <w>217</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>300.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>290.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>329</x>
-      <y>28</y>
-      <w>21</w>
-      <h>70</h>
+      <x>742</x>
+      <y>161</y>
+      <w>49</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>50.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>189</y>
+      <x>560</x>
+      <y>350</y>
       <w>217</w>
       <h>161</h>
     </coordinates>
@@ -280,16 +284,17 @@ _+switchController(controller: Controller): void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>315</x>
-      <y>399</y>
+      <x>721</x>
+      <y>560</y>
       <w>196</w>
-      <h>427</h>
+      <h>504</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controllers&gt;&gt;
 /ReviewController/
 --
 -returnButton: Button
 -deleteButton: Button
+-reviewObservableList: ObservableList&lt;Review&gt;
 -reviewTextArea: TextArea
 -newReviewButton: Button
 -saveReviewButton: Button
@@ -307,6 +312,10 @@ _+switchController(controller: Controller): void_
 -reviewRatingValue: double
 -reviewText: String
 -recommendedCheckBoxValue: boolean
+-reviewListView: ListView&lt;Review&gt; 
+-reviewDAO: ReviewDAO
+-animeComboBox: ComboBox&lt;Anime&gt;
+-selectedAnime: Anime
 --
 +ReviewController()
 +getView(): View
@@ -314,6 +323,8 @@ _+switchController(controller: Controller): void_
 -handldeDeleteButtonClick(): void
 -handleNewReviewButtonClick(): void
 -hanldeSaveReviewButtonClick(): void
+-setAnimeComboBox(): void
+-isEmptywrittenBy(): boolean
 -isValidWriteDate(): boolean
 -isValidRating(): boolean
 -isValidReview(): boolean
@@ -331,8 +342,8 @@ _+switchController(controller: Controller): void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>154</x>
-      <y>343</y>
+      <x>560</x>
+      <y>504</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -342,8 +353,8 @@ _+switchController(controller: Controller): void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>336</x>
-      <y>343</y>
+      <x>742</x>
+      <y>504</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -353,14 +364,16 @@ _+switchController(controller: Controller): void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>70</x>
-      <y>399</y>
+      <x>476</x>
+      <y>560</y>
       <w>196</w>
-      <h>441</h>
+      <h>462</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controllers&gt;&gt;
 AnimeSelectorController
 --
+-animeObservableList: ObservableList&lt;Anime&gt;
+-animeDAO: DAO&lt;Anime&gt;
 -reviewsButton: Button
 -newButton: Button
 -saveButton: Button
@@ -406,23 +419,196 @@ AnimeSelectorController
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>406</x>
-      <y>819</y>
+      <x>812</x>
+      <y>1057</y>
       <w>21</w>
-      <h>91</h>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>147</x>
-      <y>833</y>
-      <w>21</w>
-      <h>77</h>
+      <x>546</x>
+      <y>1015</y>
+      <w>28</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>20.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7</x>
+      <y>308</y>
+      <w>217</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+AnimeDAO
+--
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>707</x>
+      <y>315</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>0</y>
+      <w>217</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+DAO&lt;T&gt;
+--
++getAll(): List&lt;T&gt;
++addOrUpdate(object T): void
++remove(object: T): void
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>245</x>
+      <y>231</y>
+      <w>217</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+ReviewDAO
+--
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>14</x>
+      <y>140</y>
+      <w>217</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+/AnimeDAO/
+--
++getByID(id:int): Anime
++getAll(): List&lt;T&gt;
++addOrUpdate(object T): void
++remove(object: T): void
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>245</x>
+      <y>112</y>
+      <w>189</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+/ReviewDAO/
+--
++getAllfor(object: Anime): List&lt;Review&gt;
++getAll(): List&lt;T&gt;
++addOrUpdate(object T): void
++remove(object: T): void
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>189</x>
+      <y>84</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>84</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>140</x>
+      <y>238</y>
+      <w>21</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>203</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>238</y>
+      <w>133</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>301</y>
+      <w>371</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;510.0;10.0</additional_attributes>
   </element>
 </diagram>

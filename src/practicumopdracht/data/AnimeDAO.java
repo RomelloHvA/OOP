@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimeDAO  implements DAO<Anime> {
+public abstract class AnimeDAO  implements DAO<Anime> {
 
     private ArrayList<Anime> animeArrayList;
 
