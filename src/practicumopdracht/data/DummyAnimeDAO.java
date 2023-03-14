@@ -19,6 +19,6 @@ public class DummyAnimeDAO extends AnimeDAO{
 
     @Override
     public boolean save() {
-        return super.save();
+        return true;
     }
 }

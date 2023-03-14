@@ -19,6 +19,14 @@ public abstract class AnimeDAO  implements DAO<Anime> {
         return null;
     }
 
+    public int getIdFor(Anime anime){
+        if (!animeArrayList.contains(anime)){
+            return -1;
+        } else {
+            return animeArrayList.indexOf(anime);
+        }
+    }
+
     public AnimeDAO(){
         animeArrayList = new ArrayList<>();
     }
@@ -42,14 +50,9 @@ public abstract class AnimeDAO  implements DAO<Anime> {
     }
 
     @Override
-    public boolean save() {
-        return false;
-    }
+    public abstract boolean save();
 
     @Override
-    public boolean load() {
-
-        return true;
-    }
+    public abstract boolean load();
 
 }

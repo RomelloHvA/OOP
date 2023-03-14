@@ -128,12 +128,9 @@ public class ReviewController extends Controller{
             alert.show();
             return;
         }
-        Alert deleteAlert = new Alert(Alert.AlertType.CONFIRMATION, "Delete review?");
         emptyAllInputFields();
         setAllFieldBorderDefaults();
 
-        reviewListView.getItems().remove(selectedReview);
-        reviewDAO.delete(selectedReview);
     }
     private void handleNewReviewButtonClick(){
 

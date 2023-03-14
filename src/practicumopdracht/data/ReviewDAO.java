@@ -43,13 +43,8 @@ public abstract class ReviewDAO implements DAO<Review> {
     }
 
     @Override
-    public boolean save() {
-        return false;
-    }
+    public abstract boolean save();
 
     @Override
-    public boolean load() {
-
-        return true;
-    }
+    public abstract boolean load();
 }

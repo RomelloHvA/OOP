@@ -8,6 +8,11 @@ import java.time.LocalDate;
 
 public class ReviewDummyDAO extends ReviewDAO {
     @Override
+    public boolean save() {
+        return false;
+    }
+
+    @Override
     public boolean load() {
         Anime bleach = MainApplication.getAnimeDAO().getAll().get(0);
         Anime naruto = MainApplication.getAnimeDAO().getAll().get(1);
@@ -21,6 +26,6 @@ public class ReviewDummyDAO extends ReviewDAO {
         addOrUpdate(narutoReview);
         addOrUpdate(onePieceReview);
 
-        return super.load();
+        return true;
     }
 }
