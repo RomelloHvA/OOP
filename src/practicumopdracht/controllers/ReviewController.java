@@ -1,3 +1,7 @@
+/**
+ * Class for controlling the review View.
+ * @author Romello ten Broeke
+ */
 package practicumopdracht.controllers;
 
 import javafx.collections.FXCollections;
@@ -44,7 +48,11 @@ public class ReviewController extends Controller{
     private ComboBox<Anime> animeComboBox;
     private Anime selectedAnime;
 
-
+    /**
+     * Constructor for the ReviewController
+     * @param selectedAnime is the anime selected in the animeSelectorView. This is to correctly show which anime was
+     *                      selected in the previous and show the correct information for the selectedAnime.
+     */
     public ReviewController(Anime selectedAnime){
         this.selectedAnime = selectedAnime;
         this.reviewView = new ReviewView();
@@ -67,8 +75,6 @@ public class ReviewController extends Controller{
         setAnimeComboBox();
 
         reviewDAO = MainApplication.getReviewDAO();
-
-
 
         reviewObservableList = FXCollections.observableArrayList(reviewDAO.getAllFor(selectedAnime));
         reviewListView = reviewView.getReviewListView();
@@ -100,10 +106,17 @@ public class ReviewController extends Controller{
         return this.reviewView;
     }
 
+    /**
+     * handles the return button click and switches the view.
+     */
     private void handleReturnButtonClick(){
         MainApplication.switchController(animeSelectorController);
 
     }
+
+    /**
+     * Method for deleting the selected review.
+     */
     private void handleDeleteButtonClick(){
         Review selectedReview = reviewListView.getSelectionModel().getSelectedItem();
         try {
@@ -132,12 +145,21 @@ public class ReviewController extends Controller{
         setAllFieldBorderDefaults();
 
     }
+
+    /**
+     * Method for handling the new button click. Clears all fields and selection. Sets the border back to defaultcolor.
+     */
     private void handleNewReviewButtonClick(){
 
         reviewListView.getSelectionModel().clearSelection();
         emptyAllInputFields();
         setAllFieldBorderDefaults();
     }
+
+    /**
+     * Method for handling on saving a new review. Checks if the inputs are valid first before saving. Saves a new anime
+     * if there is none selected. Save changes if a new anime is selected.
+     */
 
     private void handleSaveReviewButtonClick(){
 
@@ -191,10 +213,17 @@ public class ReviewController extends Controller{
         }
     }
 
+    /**
+     * sets the combobox with all the available anime.
+     */
     private void setAnimeComboBox(){
         animeComboBox.setItems(this.animeSelectorController.getAnimeObservableList());
     }
 
+    /**
+     *
+     * @return true if the writtenby is empty or only spaces.
+     */
     private boolean isEmptywrittenBy(){
         boolean isEmpty = isEmptyTextField(writtenByTextField);
         if (isEmpty){
@@ -205,6 +234,11 @@ public class ReviewController extends Controller{
         }
         return isEmpty;
     }
+
+    /**
+     *
+     * @return true if the writedate is valid.
+     */
     private boolean isValidWriteDate(){
         LocalDate writeDateInput = writeDatePicker.getValue();
         boolean isValidWriteDate = false;
@@ -223,6 +257,11 @@ public class ReviewController extends Controller{
         }
         return isValidWriteDate;
     }
+
+    /**
+     *
+     * @return true if the rating is valid according to the given paramets in the method.
+     */
     private boolean isValidRating(){
         boolean isValid = false;
         double reviewRating;
@@ -244,6 +283,11 @@ public class ReviewController extends Controller{
         }
         return isValid;
     }
+
+    /**
+     *
+     * @return true
+     */
     private boolean isValidReview(){
 
         if (isEmptyTextArea(reviewTextArea)){

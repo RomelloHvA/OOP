@@ -1,3 +1,8 @@
+/**
+ * extends from Controllerclass
+ * handles the controls for the animeselectorview
+ * @author Romello ten Broeke
+ */
 package practicumopdracht.controllers;
 
 import javafx.collections.FXCollections;
@@ -43,7 +48,9 @@ public class AnimeSelectorController extends Controller {
     private CheckBox downloadedCheckBox;
     private ListView<Anime> animeListView;
 
-
+    /**
+     * Constructor for the controller. Takes no values.
+     */
     public AnimeSelectorController() {
         this.animeSelectorView = new AnimeSelectorView();
 
@@ -95,6 +102,9 @@ public class AnimeSelectorController extends Controller {
         return this.animeSelectorView;
     }
 
+    /**
+     * handles the switch to the other view.
+     */
     private void handleReviewButtonClick() {
         Anime selectedAnime = animeListView.getSelectionModel().getSelectedItem();
 
@@ -107,6 +117,10 @@ public class AnimeSelectorController extends Controller {
 
     }
 
+    /**
+     * method for handling when the new anime button is clicked. Empties all the fields and selections.
+     * Also clears the contextText for the new anime alert if it was unused.
+     */
     private void handleNewAnimeButtonClick() {
         animeListView.getSelectionModel().clearSelection();
         emptyAllInputFields();
@@ -115,6 +129,10 @@ public class AnimeSelectorController extends Controller {
         confirmNewAnimeAlert.setContentText(confirmNewAnimeText);
     }
 
+    /**
+     * method for handling when the save button is clicked. Saves a new anime if none is selected and changes values if
+     * there is an anime selected. Also calls upon methods to validate the inputs before saving. Rejects invalid inputs.
+     */
 
     private void handleSaveNewAnimeChanges() {
         boolean emptyAnimeName = isEmptyAnimeName();
@@ -181,6 +199,10 @@ public class AnimeSelectorController extends Controller {
 
     }
 
+    /**
+     * Method for handling when the delete button is clicked. Gets the selected anime and deletes it. Deletes nothing
+     * if there is no anime selected and shows a message notifying the user that nothing is deleted.
+     */
     private void handleDeleteButtonClick() {
         Anime selectedAnime = animeListView.getSelectionModel().getSelectedItem();
         try {
@@ -209,6 +231,10 @@ public class AnimeSelectorController extends Controller {
 
     }
 
+    /**
+     * @return true if a textfield is empty or only contains spaces.
+     * Also makes the border red to show which textfield it is.
+     */
     private boolean isEmptyAnimeName() {
 
         boolean isEmpty = isEmptyTextField(animeNameTextField);
@@ -221,6 +247,10 @@ public class AnimeSelectorController extends Controller {
         return isEmpty;
     }
 
+    /**
+     * @return true if the given release date is a valid one else return false.
+     * Makes release date border red if the release date is invalid.
+     */
     private boolean isValidReleaseDate() {
 
         LocalDate releaseDateInput = releaseDatePicker.getValue();
@@ -242,12 +272,19 @@ public class AnimeSelectorController extends Controller {
         return isValidReleaseDate;
     }
 
+    /**
+     * method for getting the boolean values of the checkboxes.
+     */
     private void getCheckBoxesValue() {
 
         watchedValue = watchedCheckBox.isSelected();
         downloadedValue = downloadedCheckBox.isSelected();
     }
 
+    /**
+     * Checks if the episode count given is an integer.
+     * @return true if the episode count falls within the parameters.
+     */
     private boolean isValidEpisodeCount() {
         boolean isValid = false;
         int episodeCount;
@@ -270,6 +307,10 @@ public class AnimeSelectorController extends Controller {
         return isValid;
     }
 
+    /**
+     * @return true if a textarea is empty or only contains spaces.
+     * Also makes the border red to show which textarea it is.
+     */
     private boolean isValidSynopsis() {
         boolean isValid = false;
         synopsisTextArea = animeSelectorView.getSynopsisTextArea();

@@ -8,6 +8,10 @@ import java.time.LocalDate;
 import java.util.EventListener;
 import javafx.scene.control.TextField;
 
+/**
+ * Abstract class for the controllers.
+ * @author Romello ten Broeke
+ */
 public abstract class Controller implements EventListener {
     protected final double MAX_RATING = 5.0;
     protected final double MIN_RATING = 0;
