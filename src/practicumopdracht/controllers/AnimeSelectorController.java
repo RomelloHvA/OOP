@@ -24,7 +24,7 @@ import java.util.Optional;
 public class AnimeSelectorController extends Controller {
 
     private final ObservableList<Anime> animeObservableList;
-    private DAO<Anime> animeDAO;
+    private AnimeDAO animeDAO;
     private Button reviewsButton;
     private Button newButton;
     private Button saveButton;
@@ -83,6 +83,7 @@ public class AnimeSelectorController extends Controller {
         newButton.setOnMouseClicked(mouseEvent -> handleNewAnimeButtonClick());
         saveButton.setOnMouseClicked(mouseEvent -> handleSaveNewAnimeChanges());
         deleteButton.setOnMouseClicked(mouseEvent -> handleDeleteButtonClick());
+        animeSelectorView.getSave().setOnAction(actionEvent -> handleSaveAll());
 
         animeListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldAnime, newAnime) -> {
             if (newAnime != null) {
@@ -165,8 +166,7 @@ public class AnimeSelectorController extends Controller {
                 animeDAO.addOrUpdate(anime);
                 animeListView.refresh();
                 animeListView.getSelectionModel().selectLast();
-                System.out.println("ListView " + animeListView.getItems());
-                System.out.println("ObservableList" + animeObservableList.size());
+
 
             } else if (buttonResult.get() == ButtonType.CANCEL) {
                 System.out.println("Cancel geklikt");
@@ -213,12 +213,13 @@ public class AnimeSelectorController extends Controller {
 
             } else if (buttonResult.get() == ButtonType.OK) {
 
+                MainApplication.getReviewDAO().deleteAllFor(selectedAnime);
                 animeListView.getItems().remove(selectedAnime);
-                MainApplication.getReviewDAO().getAllFor(selectedAnime).clear();
                 animeDAO.delete(selectedAnime);
+                animeDAO.getAll().remove(selectedAnime);
+                animeListView.refresh();
 
-                System.out.println("ListView " + animeListView.getItems());
-                System.out.println("ObservableList" + animeObservableList.size());
+
 
             } else if (buttonResult.get() == ButtonType.CANCEL) {
                 System.out.println("Cancel geklikt");
@@ -229,6 +230,11 @@ public class AnimeSelectorController extends Controller {
             alert.show();
         }
 
+    }
+
+    private void handleSaveAll(){
+        MainApplication.getAnimeDAO().save();
+        MainApplication.getReviewDAO().save();
     }
 
     /**
@@ -325,6 +331,7 @@ public class AnimeSelectorController extends Controller {
         }
         return isValid;
     }
+
 
     @Override
     protected void emptyAllInputFields() {

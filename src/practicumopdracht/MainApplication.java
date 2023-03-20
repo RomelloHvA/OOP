@@ -25,10 +25,11 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) {
         MainApplication.stage = stage;
-        animeDAO = new DummyAnimeDAO();
+        animeDAO = new TextAnimeDAO();
         animeDAO.load();
-        reviewDAO = new ReviewDummyDAO();
+        reviewDAO = new TextReviewDAO();
         reviewDAO.load();
+
 
 
         if(!Main.launchedFromMain) {

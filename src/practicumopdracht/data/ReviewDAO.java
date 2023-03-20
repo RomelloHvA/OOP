@@ -42,6 +42,15 @@ public abstract class ReviewDAO implements DAO<Review> {
         reviewArrayList.remove(review);
     }
 
+    public void deleteAllFor(Anime selectedAnime){
+
+        for (int i = 0; i < reviewArrayList.size(); i++) {
+            if (reviewArrayList.get(i).getBelongsTo() == selectedAnime){
+                reviewArrayList.removeAll(getAllFor(selectedAnime));
+            }
+        }
+    }
+
     @Override
     public abstract boolean save();
 

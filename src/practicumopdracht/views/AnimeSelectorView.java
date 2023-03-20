@@ -2,11 +2,15 @@ package practicumopdracht.views;
 
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import practicumopdracht.models.Anime;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class AnimeSelectorView extends View{
@@ -23,16 +27,58 @@ public class AnimeSelectorView extends View{
     private Button newButton;
     private Button saveButton;
     private ListView<Anime> animeList;
+    private MenuBar menuBar;
+    private Menu file;
+
+    private MenuItem save;
+    private MenuItem load;
+    private MenuItem exit;
 
 
+    public MenuItem getSave() {
+        return save;
+    }
 
+    public MenuItem getLoad() {
+        return load;
+    }
 
+    public MenuItem getExit() {
+        return exit;
+    }
 
     @Override
     protected Parent initializeView() {
 
         VBox masterBox = new VBox();
         masterBox.setSpacing(DEFAULT_SPACING);
+
+
+        file = new Menu("File");
+        save = new MenuItem("Save");
+        save.setGraphic(new ImageView(new Image(new File("src/practicumopdracht/views/images/save_icon.png").toURI().toString())));
+
+        load = new MenuItem("Load");
+        ImageView directoryIcon = new ImageView(new Image(new File("src/practicumopdracht/views/images/directory_icon.png").toURI().toString()));
+        directoryIcon.setFitWidth(DEFAULT_WIDTH_MENU_ICON);
+        directoryIcon.setFitHeight(DEFAULT_HEIGHT_MENU_ICON);
+        load.setGraphic(directoryIcon);
+
+
+
+        exit = new MenuItem("Exit");
+        ImageView closeIcon = new ImageView(new Image(new File("src/practicumopdracht/views/images/close_icon.png").toURI().toString()));
+        closeIcon.setFitHeight(DEFAULT_HEIGHT_MENU_ICON);
+        closeIcon.setFitWidth(DEFAULT_WIDTH_MENU_ICON);
+        exit.setGraphic(closeIcon);
+        file.getItems().addAll(save,load,exit);
+
+        menuBar = new MenuBar(file);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setTop(menuBar);
+        masterBox.getChildren().add(borderPane);
+
+
 
 
         HBox animeListBox = new HBox();
@@ -70,7 +116,7 @@ public class AnimeSelectorView extends View{
         animeNameAndDateBox.getChildren().addAll(animeNameLabel, animeNameTextField, releaseDateLabel, releaseDatePicker);
         masterBox.getChildren().add(animeNameAndDateBox);
 
-// This is where the synopsis, watched,downloaded, img and episode count should be in.
+// This is where the synopsis, watched,downloaded and episode count should be in.
         GridPane animeDetailBox = new GridPane();
         animeDetailBox.setPadding(DEFAULT_LEFT_PADDING);
 
