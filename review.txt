@@ -1,1 +1,13 @@
-0
+2
+-1
+Romello
+2023-03-01
+3.0
+Cool pirats
+true
+-1
+Je boi
+2023-03-01
+4.5
+Show about some really cool ninjas
+true

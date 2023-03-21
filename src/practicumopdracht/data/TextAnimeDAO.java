@@ -20,7 +20,6 @@ public class TextAnimeDAO extends AnimeDAO{
 
         try {
             printWriter = new PrintWriter(animeFile);
-            getAll();
             printWriter.println(getAll().size());
 
             for (int i = 0; i < getAll().size(); i++) {

@@ -1,7 +1,13 @@
-1
+2
 One Piece
 1000
 2023-03-01
 Pirates of the ocean
+true
+true
+Naruto
+700
+2002-03-08
+Cool ninjas
 true
 true
