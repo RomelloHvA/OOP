@@ -16,20 +16,13 @@ public class MainApplication extends Application {
     private final int HEIGHT = 480;
     private static AnimeDAO animeDAO;
     private static ReviewDAO reviewDAO;
-
-
-
-
     private static Stage stage;
 
     @Override
     public void start(Stage stage) {
         MainApplication.stage = stage;
         animeDAO = new TextAnimeDAO();
-//        animeDAO = new BinaryAnimeDAO();
-//        animeDAO.load();
         reviewDAO = new TextReviewDAO();
-//        reviewDAO.load();
 
 
 
