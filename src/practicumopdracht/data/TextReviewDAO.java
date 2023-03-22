@@ -37,7 +37,9 @@ public class TextReviewDAO extends ReviewDAO{
             return true;
         } catch (FileNotFoundException exception){
             System.err.println("File not found");
-        } finally {
+        } catch (IllegalArgumentException exception){
+            System.err.println("Illegal argument");
+        }finally {
             assert printWriter != null;
             printWriter.close();
         }

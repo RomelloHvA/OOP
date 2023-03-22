@@ -143,6 +143,7 @@ public class ReviewController extends Controller{
         }
         emptyAllInputFields();
         setAllFieldBorderDefaults();
+        reviewListView.getSelectionModel().clearSelection();
 
     }
 
@@ -177,19 +178,25 @@ public class ReviewController extends Controller{
             saveErrorMessage = "Please check:\n";
 
         } else if (reviewFromListView == null){
-
             getRecommendedCheckBoxValue();
             Review review = new Review(selectedAnime, writtenBy,writeDateInput, reviewRatingValue,reviewText,
                     recommendedCheckBoxValue);
-            reviewObservableList.add(review);
-            reviewDAO.addOrUpdate(review);
-            reviewListView.refresh();
 
             String saveSuccesMessage = "Confirm new review/Changes?\n" + review.toStringConfirmMessage();
             saveSuccesAlert.setContentText(saveSuccesMessage);
-            saveSuccesAlert.show();
-            emptyAllInputFields();
-            setAllFieldBorderDefaults();
+
+            Optional<ButtonType> buttonTypeOptional = saveSuccesAlert.showAndWait();
+            if (buttonTypeOptional.isEmpty()){
+                System.out.println("Niks geklikt");
+            } else if (buttonTypeOptional.get() == ButtonType.OK) {
+                reviewObservableList.add(review);
+                reviewDAO.addOrUpdate(review);
+                emptyAllInputFields();
+                setAllFieldBorderDefaults();
+            }
+
+            reviewListView.refresh();
+
 
         } else {
             String changedFieldsMessage = "Author: " + writtenBy +
@@ -200,14 +207,20 @@ public class ReviewController extends Controller{
 
 
             saveSuccesAlert.setContentText(changedFieldsMessage);
-            saveSuccesAlert.show();
+            Optional<ButtonType> buttonTypeOptional = saveSuccesAlert.showAndWait();
 
-            reviewFromListView.setWrittenBy(writtenBy);
-            reviewFromListView.setWriteDate(writeDateInput);
-            reviewFromListView.setRecommended(recommendedCheckBoxValue);
-            reviewFromListView.setRating(reviewRatingValue);
-            reviewFromListView.setReview(reviewText);
-            reviewDAO.addOrUpdate(reviewFromListView);
+            if (buttonTypeOptional.isEmpty()){
+                System.out.println("Niks geklikt neef");
+            } else if (buttonTypeOptional.get() == ButtonType.OK) {
+                reviewFromListView.setWrittenBy(writtenBy);
+                reviewFromListView.setWriteDate(writeDateInput);
+                reviewFromListView.setRecommended(recommendedCheckBoxValue);
+                reviewFromListView.setRating(reviewRatingValue);
+                reviewFromListView.setReview(reviewText);
+                reviewDAO.addOrUpdate(reviewFromListView);
+            }
+
+
             reviewListView.refresh();
 
         }

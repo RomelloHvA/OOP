@@ -23,7 +23,7 @@ import java.util.Optional;
 
 public class AnimeSelectorController extends Controller {
 
-    private final ObservableList<Anime> animeObservableList;
+    private ObservableList<Anime> animeObservableList;
     private AnimeDAO animeDAO;
     private Button reviewsButton;
     private Button newButton;
@@ -84,6 +84,8 @@ public class AnimeSelectorController extends Controller {
         saveButton.setOnMouseClicked(mouseEvent -> handleSaveNewAnimeChanges());
         deleteButton.setOnMouseClicked(mouseEvent -> handleDeleteButtonClick());
         animeSelectorView.getSave().setOnAction(actionEvent -> handleSaveAll());
+        animeSelectorView.getLoad().setOnAction(actionEvent -> handleLoadAll());
+        animeSelectorView.getExit().setOnAction(actionEvent -> handleExit());
 
         animeListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldAnime, newAnime) -> {
             if (newAnime != null) {
@@ -95,6 +97,36 @@ public class AnimeSelectorController extends Controller {
                 synopsisTextArea.setText(newAnime.getSynopsis());
             }
         });
+
+    }
+
+    private void handleExit() {
+        Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION, "Do you wish to save and exit?");
+        Optional<ButtonType> buttonTypeOptional = exitAlert.showAndWait();
+        if (buttonTypeOptional.isEmpty()){
+            System.out.println("Noppes geklikt");
+        } else if (buttonTypeOptional.get() == ButtonType.OK) {
+            handleSaveAll();
+            System.exit(0);
+        }
+    }
+
+    private void handleLoadAll() {
+        Alert loadAlert = new Alert(Alert.AlertType.CONFIRMATION, "Load all Data?");
+        Optional<ButtonType> buttonTypeOptional = loadAlert.showAndWait();
+        if (buttonTypeOptional.isEmpty()){
+            System.out.println("Niks geklikt");
+        } else if (buttonTypeOptional.get() == ButtonType.OK) {
+            Alert loadingAlert = new Alert(Alert.AlertType.INFORMATION, "Data Loaded");
+            if (!MainApplication.getAnimeDAO().load() || !MainApplication.getReviewDAO().load()){
+                loadingAlert.setContentText("Data not loaded");
+            }
+            loadingAlert.show();
+            animeObservableList = FXCollections.observableArrayList(animeDAO.getAll());
+            animeListView = animeSelectorView.getAnimeList();
+            animeListView.setItems(animeObservableList);
+            animeListView.refresh();
+        }
 
     }
 
@@ -232,9 +264,19 @@ public class AnimeSelectorController extends Controller {
 
     }
 
-    private void handleSaveAll(){
-        MainApplication.getAnimeDAO().save();
-        MainApplication.getReviewDAO().save();
+    private void handleSaveAll() {
+        Alert saveAlert = new Alert(Alert.AlertType.CONFIRMATION, "Save all Data?");
+        Optional<ButtonType> buttonTypeOptional = saveAlert.showAndWait();
+        if (buttonTypeOptional.isEmpty()) {
+            System.out.println("Niks geklikt");
+        } else if (buttonTypeOptional.get() == ButtonType.OK) {
+            Alert savingAlert = new Alert(Alert.AlertType.INFORMATION, "Data saved");
+            if (!MainApplication.getAnimeDAO().save() || !MainApplication.getReviewDAO().save()) {
+                savingAlert.setContentText("Data not saved");
+            }
+            savingAlert.show();
+
+        }
     }
 
     /**

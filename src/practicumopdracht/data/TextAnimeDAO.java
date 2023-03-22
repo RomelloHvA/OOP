@@ -4,6 +4,7 @@ import practicumopdracht.models.Anime;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.Locale;
@@ -31,8 +32,8 @@ public class TextAnimeDAO extends AnimeDAO{
                 printWriter.println(getAll().get(i).isWatched());
             }
             return true;
-        } catch (FileNotFoundException exception){
-            System.out.println("File not found");
+        }catch (IOException exception){
+            System.err.println(exception.getCause());
 
         } finally {
 
@@ -78,7 +79,7 @@ public class TextAnimeDAO extends AnimeDAO{
 
         } catch (Exception exception){
 
-            System.err.println("Or corrupt file");
+            System.err.println("corrupt file");
 
         }finally {
             assert scanner != null;
