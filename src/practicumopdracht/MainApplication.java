@@ -21,8 +21,10 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) {
         MainApplication.stage = stage;
-        animeDAO = new TextAnimeDAO();
-        reviewDAO = new TextReviewDAO();
+//        animeDAO = new TextAnimeDAO();
+        animeDAO = new BinaryAnimeDAO();
+//        reviewDAO = new TextReviewDAO();
+        reviewDAO = new BinaryReviewDAO();
 
 
 

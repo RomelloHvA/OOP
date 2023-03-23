@@ -12,13 +12,14 @@ public class BinaryAnimeDAO extends AnimeDAO{
     public boolean save() {
         File animeFile = new File(FILE_NAME);
 
-
         try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(animeFile))){
 
-            dataOutputStream.write(getAll().size());
+            dataOutputStream.writeInt(getAll().size());
+            System.out.println(getAll().size());
 
             for (int i = 0; i < getAll().size(); i++) {
                dataOutputStream.writeUTF(getAll().get(i).getName());
+                System.out.println(getAll().get(i).getName());
                dataOutputStream.writeInt(getAll().get(i).getEpisodes());
                dataOutputStream.writeUTF(getAll().get(i).getReleaseDate().toString());
                dataOutputStream.writeUTF(getAll().get(i).getSynopsis());
@@ -37,7 +38,10 @@ public class BinaryAnimeDAO extends AnimeDAO{
     public boolean load() {
         File file = new File(FILE_NAME);
         try (DataInputStream dataInputStream = new DataInputStream(new FileInputStream(file))){
+
             int animeSize = dataInputStream.readInt();
+            System.out.println(animeSize);
+
             for (int i = 0; i < animeSize; i++) {
                 String animeName = dataInputStream.readUTF();
                 int episodeCount = dataInputStream.readInt();

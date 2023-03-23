@@ -277,6 +277,7 @@ public class AnimeSelectorController extends Controller {
             savingAlert.show();
 
         }
+//        MainApplication.getAnimeDAO().save();
     }
 
     /**
