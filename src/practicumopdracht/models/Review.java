@@ -2,8 +2,8 @@ package practicumopdracht.models;
 
 import java.time.LocalDate;
 
-public class Review {
-    private Anime belongsTo;
+public class Review implements java.io.Serializable {
+    private transient Anime belongsTo;
     private String writtenBy;
     private LocalDate writeDate;
     private double rating;

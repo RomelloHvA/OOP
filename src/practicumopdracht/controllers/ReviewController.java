@@ -10,7 +10,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Border;
 import javafx.scene.paint.Color;
 import practicumopdracht.MainApplication;
-import practicumopdracht.data.DAO;
+import practicumopdracht.comparators.NameComparator;
+import practicumopdracht.comparators.RatingWriteDateComparator;
+import practicumopdracht.comparators.WrittenByComparator;
 import practicumopdracht.data.ReviewDAO;
 import practicumopdracht.models.Anime;
 import practicumopdracht.models.Review;
@@ -18,7 +20,7 @@ import practicumopdracht.views.ReviewView;
 import practicumopdracht.views.View;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 
 public class ReviewController extends Controller{
@@ -73,6 +75,7 @@ public class ReviewController extends Controller{
         this.animeSelectorController = new AnimeSelectorController();
         animeComboBox.getSelectionModel().select(selectedAnime);
         setAnimeComboBox();
+        FXCollections.sort(animeComboBox.getItems(), Collections.reverseOrder(new NameComparator()));
 
         reviewDAO = MainApplication.getReviewDAO();
 
@@ -85,6 +88,10 @@ public class ReviewController extends Controller{
         deleteButton.setOnMouseClicked(mouseEvent -> handleDeleteButtonClick());
         newReviewButton.setOnMouseClicked(mouseEvent -> handleNewReviewButtonClick());
         saveReviewButton.setOnMouseClicked(mouseEvent -> handleSaveReviewButtonClick());
+        reviewView.getSortRatingAsc().setOnAction(actionEvent -> handleRatingAscClick());
+        reviewView.getSortRatingDes().setOnAction(actionEvent -> handleRatingDesClick());
+        reviewView.getSortWrittenByAsc().setOnAction(actionEvent -> handleWriteDateAscClick());
+        reviewView.getSortWrittenByDes().setOnAction(actionEvent -> handleWriteDateDesClick());
 
         // Fills in all the fields
         reviewListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldReview, newReview) ->{
@@ -102,6 +109,54 @@ public class ReviewController extends Controller{
             reviewListView.setItems(reviewObservableList);
         });
     }
+
+    private void handleWriteDateDesClick() {
+        reviewView.getSortRatingAsc().setSelected(false);
+        reviewView.getSortRatingDes().setSelected(false);
+        reviewView.getSortWrittenByAsc().setSelected(false);
+        reviewView.getSortWrittenByDes().setSelected(true);
+        sortWriteDateDes();
+    }
+
+    private void sortWriteDateDes() {
+        FXCollections.sort(reviewListView.getItems(), new WrittenByComparator());
+    }
+
+    private void handleWriteDateAscClick() {
+        reviewView.getSortRatingAsc().setSelected(false);
+        reviewView.getSortRatingDes().setSelected(false);
+        reviewView.getSortWrittenByAsc().setSelected(true);
+        reviewView.getSortWrittenByDes().setSelected(false);
+        sortWriteDateAsc();
+    }
+
+    private void sortWriteDateAsc() {
+        FXCollections.sort(reviewListView.getItems(), Collections.reverseOrder(new WrittenByComparator()));
+    }
+
+    private void handleRatingAscClick() {
+        reviewView.getSortRatingAsc().setSelected(true);
+        reviewView.getSortRatingDes().setSelected(false);
+        reviewView.getSortWrittenByAsc().setSelected(false);
+        reviewView.getSortWrittenByDes().setSelected(false);
+        sortRatingAsc();
+    }
+    private void handleRatingDesClick(){
+        reviewView.getSortRatingAsc().setSelected(false);
+        reviewView.getSortRatingDes().setSelected(true);
+        reviewView.getSortWrittenByAsc().setSelected(false);
+        reviewView.getSortWrittenByDes().setSelected(false);
+        sortRatingDes();
+    }
+
+    private void sortRatingAsc() {
+        FXCollections.sort(reviewListView.getItems(), Collections.reverseOrder(new RatingWriteDateComparator()));
+    }
+
+    private void sortRatingDes(){
+        FXCollections.sort(reviewListView.getItems(), new RatingWriteDateComparator());
+    }
+
     public View getView() {
         return this.reviewView;
     }
@@ -144,6 +199,7 @@ public class ReviewController extends Controller{
         emptyAllInputFields();
         setAllFieldBorderDefaults();
         reviewListView.getSelectionModel().clearSelection();
+        sortRatingDes();
 
     }
 
@@ -220,7 +276,7 @@ public class ReviewController extends Controller{
                 reviewDAO.addOrUpdate(reviewFromListView);
             }
 
-
+            sortRatingDes();
             reviewListView.refresh();
 
         }

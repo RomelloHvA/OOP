@@ -24,7 +24,7 @@ public class MainApplication extends Application {
 //        animeDAO = new TextAnimeDAO();
         animeDAO = new BinaryAnimeDAO();
 //        reviewDAO = new TextReviewDAO();
-        reviewDAO = new BinaryReviewDAO();
+        reviewDAO = new ObjectReviewDAO();
 
 
 

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class BinaryAnimeDAO extends AnimeDAO{
 
-    private static String FILE_NAME = "anime.dat";
+    private static final String FILE_NAME = "anime.dat";
     @Override
     public boolean save() {
         File animeFile = new File(FILE_NAME);

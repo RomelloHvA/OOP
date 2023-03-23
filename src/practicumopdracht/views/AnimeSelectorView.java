@@ -11,7 +11,6 @@ import javafx.scene.layout.VBox;
 import practicumopdracht.models.Anime;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class AnimeSelectorView extends View{
 
@@ -28,11 +27,14 @@ public class AnimeSelectorView extends View{
     private Button saveButton;
     private ListView<Anime> animeList;
     private MenuBar menuBar;
-    private Menu file;
+    private Menu fileMenu;
+    private Menu sortMenu;
 
     private MenuItem save;
     private MenuItem load;
     private MenuItem exit;
+    private MenuItem ascendingMenuItem;
+    private MenuItem descendingMenuItem;
 
 
     public MenuItem getSave() {
@@ -47,6 +49,14 @@ public class AnimeSelectorView extends View{
         return exit;
     }
 
+    public MenuItem getAscendingMenuItem() {
+        return ascendingMenuItem;
+    }
+
+    public MenuItem getDescendingMenuItem() {
+        return descendingMenuItem;
+    }
+
     @Override
     protected Parent initializeView() {
 
@@ -54,7 +64,7 @@ public class AnimeSelectorView extends View{
         masterBox.setSpacing(DEFAULT_SPACING);
 
 
-        file = new Menu("File");
+        fileMenu = new Menu("File");
         save = new MenuItem("Save");
         save.setGraphic(new ImageView(new Image(new File("src/practicumopdracht/views/images/save_icon.png").toURI().toString())));
 
@@ -71,9 +81,15 @@ public class AnimeSelectorView extends View{
         closeIcon.setFitHeight(DEFAULT_HEIGHT_MENU_ICON);
         closeIcon.setFitWidth(DEFAULT_WIDTH_MENU_ICON);
         exit.setGraphic(closeIcon);
-        file.getItems().addAll(save,load,exit);
+        fileMenu.getItems().addAll(save,load,exit);
 
-        menuBar = new MenuBar(file);
+        sortMenu = new Menu("Sort");
+
+        ascendingMenuItem = new MenuItem("Name ascending");
+        descendingMenuItem = new MenuItem("Name descending");
+        sortMenu.getItems().addAll(ascendingMenuItem,descendingMenuItem);
+
+        menuBar = new MenuBar(fileMenu, sortMenu);
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(menuBar);
         masterBox.getChildren().add(borderPane);

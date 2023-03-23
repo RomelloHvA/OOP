@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Border;
 import javafx.scene.paint.Color;
 import practicumopdracht.MainApplication;
+import practicumopdracht.comparators.NameComparator;
 import practicumopdracht.data.AnimeDAO;
 import practicumopdracht.data.DAO;
 import practicumopdracht.models.Anime;
@@ -19,6 +20,8 @@ import practicumopdracht.views.View;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Optional;
 
 public class AnimeSelectorController extends Controller {
@@ -86,6 +89,9 @@ public class AnimeSelectorController extends Controller {
         animeSelectorView.getSave().setOnAction(actionEvent -> handleSaveAll());
         animeSelectorView.getLoad().setOnAction(actionEvent -> handleLoadAll());
         animeSelectorView.getExit().setOnAction(actionEvent -> handleExit());
+        animeSelectorView.getAscendingMenuItem().setOnAction(actionEvent -> handleSortAscending());
+        animeSelectorView.getDescendingMenuItem().setOnAction(actionEvent -> handleSortDescending());
+
 
         animeListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldAnime, newAnime) -> {
             if (newAnime != null) {
@@ -96,8 +102,17 @@ public class AnimeSelectorController extends Controller {
                 episodeCountTextField.setText(String.valueOf(newAnime.getEpisodes()));
                 synopsisTextArea.setText(newAnime.getSynopsis());
             }
+
         });
 
+    }
+
+    private void handleSortDescending() {
+        FXCollections.sort(animeListView.getItems(), new NameComparator());
+    }
+
+    private void handleSortAscending() {
+        FXCollections.sort(animeListView.getItems(), Collections.reverseOrder(new NameComparator()));
     }
 
     private void handleExit() {
@@ -126,6 +141,7 @@ public class AnimeSelectorController extends Controller {
             animeListView = animeSelectorView.getAnimeList();
             animeListView.setItems(animeObservableList);
             animeListView.refresh();
+            handleSortAscending();
         }
 
     }
@@ -226,7 +242,9 @@ public class AnimeSelectorController extends Controller {
             confirmNewAnimeAlert.setContentText(changedFieldsMessage);
             confirmNewAnimeAlert.show();
 
+
         }
+        handleSortAscending();
 
 
     }
@@ -261,6 +279,7 @@ public class AnimeSelectorController extends Controller {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Nothing deleted");
             alert.show();
         }
+        handleSortAscending();
 
     }
 
