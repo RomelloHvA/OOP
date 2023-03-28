@@ -127,22 +127,29 @@ public class AnimeSelectorController extends Controller {
     }
 
     private void handleLoadAll() {
-        Alert loadAlert = new Alert(Alert.AlertType.CONFIRMATION, "Load all Data?");
-        Optional<ButtonType> buttonTypeOptional = loadAlert.showAndWait();
-        if (buttonTypeOptional.isEmpty()){
-            System.out.println("Niks geklikt");
-        } else if (buttonTypeOptional.get() == ButtonType.OK) {
-            Alert loadingAlert = new Alert(Alert.AlertType.INFORMATION, "Data Loaded");
-            if (!MainApplication.getAnimeDAO().load() || !MainApplication.getReviewDAO().load()){
-                loadingAlert.setContentText("Data not loaded");
+        if (MainApplication.isIsLoaded()){
+            Alert isLoaded = new Alert(Alert.AlertType.ERROR,"Data already Loaded");
+            isLoaded.show();
+        } else {
+            Alert loadAlert = new Alert(Alert.AlertType.CONFIRMATION, "Load all Data?");
+            Optional<ButtonType> buttonTypeOptional = loadAlert.showAndWait();
+            if (buttonTypeOptional.isEmpty()){
+                System.out.println("Niks geklikt");
+            } else if (buttonTypeOptional.get() == ButtonType.OK) {
+                Alert loadingAlert = new Alert(Alert.AlertType.INFORMATION, "Data Loaded");
+                if (!MainApplication.getAnimeDAO().load() || !MainApplication.getReviewDAO().load()){
+                    loadingAlert.setContentText("Data not loaded");
+                }
+                loadingAlert.show();
+                animeObservableList = FXCollections.observableArrayList(animeDAO.getAll());
+                animeListView = animeSelectorView.getAnimeList();
+                animeListView.setItems(animeObservableList);
+                animeListView.refresh();
+                handleSortAscending();
+                MainApplication.setIsLoaded(true);
             }
-            loadingAlert.show();
-            animeObservableList = FXCollections.observableArrayList(animeDAO.getAll());
-            animeListView = animeSelectorView.getAnimeList();
-            animeListView.setItems(animeObservableList);
-            animeListView.refresh();
-            handleSortAscending();
         }
+
 
     }
 
@@ -162,6 +169,8 @@ public class AnimeSelectorController extends Controller {
             MainApplication.switchController(reviewController);
         } else {
             System.out.println("Nothing selectedddd");
+            Alert nothingSelectedAlert = new Alert(Alert.AlertType.ERROR,"Nothing selected.");
+            nothingSelectedAlert.show();
         }
 
     }
@@ -296,7 +305,6 @@ public class AnimeSelectorController extends Controller {
             savingAlert.show();
 
         }
-//        MainApplication.getAnimeDAO().save();
     }
 
     /**

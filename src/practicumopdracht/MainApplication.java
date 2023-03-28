@@ -18,8 +18,19 @@ public class MainApplication extends Application {
     private static ReviewDAO reviewDAO;
     private static Stage stage;
 
+    private static boolean isLoaded;
+
+    public static void setIsLoaded(boolean isLoaded) {
+        MainApplication.isLoaded = isLoaded;
+    }
+
+    public static boolean isIsLoaded() {
+        return isLoaded;
+    }
+
     @Override
     public void start(Stage stage) {
+        isLoaded = false;
         MainApplication.stage = stage;
 //        animeDAO = new TextAnimeDAO();
         animeDAO = new BinaryAnimeDAO();

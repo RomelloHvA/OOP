@@ -16,7 +16,6 @@ public class Main {
 
         if(!jaIkAccepteer) {
             showTegridy();
-
             return;
         }
 
