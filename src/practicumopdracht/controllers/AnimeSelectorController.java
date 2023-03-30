@@ -126,15 +126,22 @@ public class AnimeSelectorController extends Controller {
         }
     }
 
+    /**
+     * Method for loading both the animeDAO and reviewDAO. If data has already been loaded it won't load it again.
+     */
+
     private void handleLoadAll() {
+
         if (MainApplication.isIsLoaded()){
             Alert isLoaded = new Alert(Alert.AlertType.ERROR,"Data already Loaded");
             isLoaded.show();
         } else {
             Alert loadAlert = new Alert(Alert.AlertType.CONFIRMATION, "Load all Data?");
+
             Optional<ButtonType> buttonTypeOptional = loadAlert.showAndWait();
             if (buttonTypeOptional.isEmpty()){
                 System.out.println("Niks geklikt");
+
             } else if (buttonTypeOptional.get() == ButtonType.OK) {
                 Alert loadingAlert = new Alert(Alert.AlertType.INFORMATION, "Data Loaded");
                 if (!MainApplication.getAnimeDAO().load() || !MainApplication.getReviewDAO().load()){
@@ -291,6 +298,10 @@ public class AnimeSelectorController extends Controller {
         handleSortAscending();
 
     }
+
+    /**
+     * Method for saving all the new changes to a DAO.
+     */
 
     private void handleSaveAll() {
         Alert saveAlert = new Alert(Alert.AlertType.CONFIRMATION, "Save all Data?");

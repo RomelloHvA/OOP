@@ -85,8 +85,8 @@ public class ReviewView extends View {
 
         sortRatingAsc = new RadioButton("Rating (ASC)");
         sortRatingDes = new RadioButton("Rating (DES)");
-        sortWrittenByAsc = new RadioButton("Author (ASC)");
-        sortWrittenByDes = new RadioButton("Author (DES)");
+        sortWrittenByAsc = new RadioButton("Author (A-Z)");
+        sortWrittenByDes = new RadioButton("Author (Z-A)");
 
         reviewDetailPane.add(sortRatingAsc, 0, 0);
         reviewDetailPane.add(sortRatingDes, 1, 0);

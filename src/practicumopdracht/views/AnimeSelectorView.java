@@ -4,10 +4,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import practicumopdracht.models.Anime;
 
 import java.io.File;
@@ -85,8 +84,8 @@ public class AnimeSelectorView extends View{
 
         sortMenu = new Menu("Sort");
 
-        ascendingMenuItem = new MenuItem("Name ascending");
-        descendingMenuItem = new MenuItem("Name descending");
+        ascendingMenuItem = new MenuItem("Name (A-Z)");
+        descendingMenuItem = new MenuItem("Name (Z-A)");
         sortMenu.getItems().addAll(ascendingMenuItem,descendingMenuItem);
 
         menuBar = new MenuBar(fileMenu, sortMenu);
@@ -174,6 +173,7 @@ public class AnimeSelectorView extends View{
 
         newAndSaveButtonBox.getChildren().addAll(newButton, saveButton);
         masterBox.getChildren().add(newAndSaveButtonBox);
+        masterBox.setStyle("-fx-font-family: Arial; -fx-font-size: 12px;");
 
         return masterBox;
     }

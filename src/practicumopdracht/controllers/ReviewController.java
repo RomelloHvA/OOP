@@ -354,8 +354,8 @@ public class ReviewController extends Controller{
     }
 
     /**
-     *
-     * @return true
+     * Checks if the review is valid
+     * @return true if it is valid.
      */
     private boolean isValidReview(){
 
