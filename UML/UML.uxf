@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.0.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>406</x>
-      <y>1085</y>
-      <w>266</w>
-      <h>154</h>
+      <x>680</x>
+      <y>845</y>
+      <w>190</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Anime
 --
@@ -28,10 +28,10 @@ String synopsis, boolean downloaded, boolean watched)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>756</x>
-      <y>1085</y>
-      <w>294</w>
-      <h>154</h>
+      <x>930</x>
+      <y>845</y>
+      <w>210</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Review
 --
@@ -51,10 +51,10 @@ double rating, String review, boolean recommended)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>665</x>
-      <y>1092</y>
-      <w>105</w>
-      <h>35</h>
+      <x>865</x>
+      <y>850</y>
+      <w>75</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 belongsTo
@@ -65,10 +65,10 @@ m2=0..n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>973</x>
-      <y>252</y>
-      <w>203</w>
-      <h>147</h>
+      <x>1085</x>
+      <y>250</y>
+      <w>145</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>&lt;&lt;views&gt;&gt;
 /view/
@@ -90,10 +90,10 @@ m2=0..n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1078</x>
-      <y>448</y>
-      <w>182</w>
-      <h>175</h>
+      <x>1160</x>
+      <y>390</y>
+      <w>130</w>
+      <h>125</h>
     </coordinates>
     <panel_attributes>&lt;&lt;views&gt;&gt;
 ReviewView
@@ -118,10 +118,10 @@ ReviewView
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>924</x>
-      <y>448</y>
-      <w>140</w>
-      <h>182</h>
+      <x>1050</x>
+      <y>390</y>
+      <w>100</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;views&gt;&gt;
 AnimeSelectorView
@@ -147,10 +147,10 @@ AnimeSelectorView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1015</x>
-      <y>392</y>
-      <w>21</w>
-      <h>70</h>
+      <x>1115</x>
+      <y>350</y>
+      <w>15</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -158,10 +158,10 @@ AnimeSelectorView
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1120</x>
-      <y>392</y>
-      <w>21</w>
-      <h>70</h>
+      <x>1190</x>
+      <y>350</y>
+      <w>15</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -169,10 +169,10 @@ AnimeSelectorView
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>742</x>
-      <y>133</y>
-      <w>112</w>
-      <h>35</h>
+      <x>920</x>
+      <y>165</y>
+      <w>80</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>&lt;&lt;javafx.application&gt;&gt;
 Application
@@ -183,10 +183,10 @@ Application
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>574</x>
-      <y>182</y>
-      <w>203</w>
-      <h>140</h>
+      <x>800</x>
+      <y>200</y>
+      <w>145</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>MainApplication
 --
@@ -208,10 +208,10 @@ _+getReviewDAO_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>532</x>
-      <y>126</y>
-      <w>140</w>
-      <h>35</h>
+      <x>770</x>
+      <y>160</y>
+      <w>100</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>Main
 --
@@ -223,10 +223,10 @@ _+getReviewDAO_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>595</x>
-      <y>154</y>
-      <w>49</w>
-      <h>42</h>
+      <x>815</x>
+      <y>180</y>
+      <w>35</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>50.0;40.0;10.0;10.0</additional_attributes>
@@ -234,10 +234,10 @@ _+getReviewDAO_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>224</y>
-      <w>217</w>
-      <h>84</h>
+      <x>940</x>
+      <y>230</y>
+      <w>155</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>290.0;100.0;10.0;10.0</additional_attributes>
@@ -245,10 +245,10 @@ _+getReviewDAO_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>161</y>
-      <w>49</w>
-      <h>35</h>
+      <x>920</x>
+      <y>185</y>
+      <w>35</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;30.0</additional_attributes>
@@ -256,10 +256,10 @@ _+getReviewDAO_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>350</y>
-      <w>217</w>
-      <h>161</h>
+      <x>790</x>
+      <y>320</y>
+      <w>155</w>
+      <h>115</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controllers&gt;&gt;
 /Controller/
@@ -284,10 +284,10 @@ _+getReviewDAO_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>721</x>
-      <y>560</y>
-      <w>196</w>
-      <h>504</h>
+      <x>905</x>
+      <y>470</y>
+      <w>140</w>
+      <h>360</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controllers&gt;&gt;
 /ReviewController/
@@ -342,10 +342,10 @@ _+getReviewDAO_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>504</y>
-      <w>21</w>
-      <h>70</h>
+      <x>790</x>
+      <y>430</y>
+      <w>15</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -353,10 +353,10 @@ _+getReviewDAO_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>504</y>
-      <w>21</w>
-      <h>70</h>
+      <x>920</x>
+      <y>430</y>
+      <w>15</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -364,10 +364,10 @@ _+getReviewDAO_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>476</x>
-      <y>560</y>
-      <w>196</w>
-      <h>462</h>
+      <x>730</x>
+      <y>470</y>
+      <w>140</w>
+      <h>330</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controllers&gt;&gt;
 AnimeSelectorController
@@ -419,10 +419,10 @@ AnimeSelectorController
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>812</x>
-      <y>1057</y>
-      <w>21</w>
-      <h>42</h>
+      <x>970</x>
+      <y>825</y>
+      <w>15</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -430,10 +430,10 @@ AnimeSelectorController
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>1015</y>
-      <w>28</w>
-      <h>84</h>
+      <x>780</x>
+      <y>795</y>
+      <w>20</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>20.0;10.0;10.0;100.0</additional_attributes>
@@ -441,13 +441,13 @@ AnimeSelectorController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>7</x>
-      <y>308</y>
-      <w>217</w>
-      <h>56</h>
+      <x>105</x>
+      <y>225</y>
+      <w>155</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;data&gt;&gt;
-AnimeDAO
+DummyAnimeDAO
 --
 +save(): boolean
 +load(): boolean
@@ -458,10 +458,10 @@ AnimeDAO
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>707</x>
-      <y>315</y>
-      <w>21</w>
-      <h>49</h>
+      <x>895</x>
+      <y>295</y>
+      <w>15</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -469,10 +469,10 @@ AnimeDAO
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>0</y>
-      <w>217</w>
-      <h>91</h>
+      <x>375</x>
+      <y>10</y>
+      <w>155</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>&lt;&lt;data&gt;&gt;
 DAO&lt;T&gt;
@@ -489,13 +489,13 @@ DAO&lt;T&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>245</x>
-      <y>231</y>
-      <w>217</w>
-      <h>56</h>
+      <x>500</x>
+      <y>240</y>
+      <w>155</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;data&gt;&gt;
-ReviewDAO
+DummyReviewDAO
 --
 +save(): boolean
 +load(): boolean
@@ -506,10 +506,10 @@ ReviewDAO
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>14</x>
-      <y>140</y>
-      <w>217</w>
-      <h>105</h>
+      <x>260</x>
+      <y>115</y>
+      <w>155</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>&lt;&lt;data&gt;&gt;
 /AnimeDAO/
@@ -527,10 +527,10 @@ ReviewDAO
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>245</x>
-      <y>112</y>
-      <w>189</w>
-      <h>98</h>
+      <x>440</x>
+      <y>115</y>
+      <w>135</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>&lt;&lt;data&gt;&gt;
 /ReviewDAO/
@@ -548,67 +548,288 @@ ReviewDAO
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
-      <y>84</y>
-      <w>21</w>
-      <h>70</h>
+      <x>385</x>
+      <y>70</y>
+      <w>20</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>280</x>
-      <y>84</y>
-      <w>21</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>140</x>
-      <y>238</y>
-      <w>21</w>
-      <h>84</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>315</x>
-      <y>203</y>
-      <w>21</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>20.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>455</x>
-      <y>238</y>
-      <w>133</w>
-      <h>21</h>
+      <y>70</y>
+      <w>25</w>
+      <h>55</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>217</x>
-      <y>301</y>
-      <w>371</w>
-      <h>21</h>
+      <x>200</x>
+      <y>185</y>
+      <w>75</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>180</y>
+      <w>75</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>275</y>
+      <w>155</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+TextAnimeDAO
+--
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>215</y>
+      <w>155</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+Binary
+AnimeDAO
+--
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>275</x>
+      <y>185</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>375</x>
+      <y>185</y>
+      <w>20</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;20.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>595</x>
+      <y>120</y>
+      <w>155</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+ObjectReviewDAO
+--
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>595</x>
+      <y>185</y>
+      <w>155</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;data&gt;&gt;
+TextReviewDAO
+--
++save(): boolean
++load(): boolean
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>180</y>
+      <w>65</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>125</y>
+      <w>35</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>475</y>
+      <w>155</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;java.utila&gt;&gt;
+Comparator
+--
++compare(o1: t,o2:T): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>540</y>
+      <w>155</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;java.utila&gt;&gt;
+NameComparator
+--
++compare(o1: t,o2:T): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>540</y>
+      <w>155</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;java.utila&gt;&gt;
+RatingWriteDateComparator
+--
++compare(o1: t,o2:T): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>540</y>
+      <w>155</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;java.utila&gt;&gt;
+WrittenByComparator
+--
++compare(o1: t,o2:T): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>245</x>
+      <y>510</y>
+      <w>65</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>335</x>
+      <y>510</y>
+      <w>20</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>415</x>
+      <y>510</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>215</x>
+      <y>565</y>
+      <w>525</w>
+      <h>125</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;510.0;10.0</additional_attributes>
+    <additional_attributes>1030.0;230.0;10.0;230.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>355</x>
+      <y>565</y>
+      <w>560</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>1100.0;510.0;10.0;510.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>515</x>
+      <y>565</y>
+      <w>15</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;510.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
