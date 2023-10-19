@@ -1,5 +1,5 @@
 # OOP (Development stopped)
-#Description
+# Description
 This project is a project which focusses on learning advanced Object oriented programming and also creating a GUI with Java. 
 The concept of this project is saving Anime titles in a list with a synopsis which people can review. The saving can be done in multiple ways such as Text, Objects or in Binary.
 The animes and Reviews alike can be sorted with different criteria.
