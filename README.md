@@ -21,8 +21,18 @@ The Anime Title Management System is designed to be an educational project that 
     Clear input fields with the "New Anime" button.
 
 # 3. Development Progress (UMLs)
- 
-
+Week 1:
+![UML_week1](https://github.com/RomelloHvA/OOP/assets/148497822/763688b3-ca24-44a5-897e-78045edd93da)
+Week 2:
+![UML_week2](https://github.com/RomelloHvA/OOP/assets/148497822/61e315e4-dfbe-4eb9-a170-354cc1db415f)
+Week 3:
+![UML_week3](https://github.com/RomelloHvA/OOP/assets/148497822/8912dde2-7a39-4d77-9535-901e31c9b226)
+Week 4:
+![UML_week4](https://github.com/RomelloHvA/OOP/assets/148497822/9489693d-26bb-44f8-90fd-6aa6768939c4)
+Week 5:
+![UML_week5](https://github.com/RomelloHvA/OOP/assets/148497822/ef557466-79a6-4657-b784-23b46531a5d5)
+Week 6:
+![UML_week6](https://github.com/RomelloHvA/OOP/assets/148497822/c00c2820-be23-46a7-bfea-a1302e0273e3)
 
 
 # 4. Installation
